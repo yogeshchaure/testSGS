@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="contractLineFormPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsContractHeaderToLinesVO" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsContractHeaderToLinesVOIterator"/>
+        <iterator Binds="SgsContractHeaderVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsContractHeaderVO1Iterator"/>
+    </executables>
+    <bindings>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action IterBinding="SgsContractHeaderToLinesVOIterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <attributeValues IterBinding="SgsContractHeaderToLinesVOIterator" id="LineNo">
+            <AttrNames>
+                <Item Value="LineNo"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsContractHeaderToLinesVOIterator" StaticList="false" Uses="LOV_BuId" id="BuId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsContractHeaderToLinesVOIterator" StaticList="false" Uses="LOV_ServicesId" id="ServicesId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId1"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsContractHeaderVO1Iterator" id="ConNo">
+            <AttrNames>
+                <Item Value="ConNo"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_CustomersId" id="CustomersId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_BillTypeId" id="BillTypeId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsContractHeaderVO1Iterator" id="CreatedDate">
+            <AttrNames>
+                <Item Value="CreatedDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsContractHeaderVO1Iterator" id="CreatedBy">
+            <AttrNames>
+                <Item Value="CreatedBy"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
+</pageDefinition>

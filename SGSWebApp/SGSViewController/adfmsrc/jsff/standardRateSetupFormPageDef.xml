@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="standardRateSetupFormPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsStandarardRateVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsStandarardRateVO1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="SgsStandarardRateVO1Iterator" StaticList="false" Uses="LOV_ExpenseType" id="ExpenseType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsStandarardRateVO1Iterator" StaticList="false" Uses="LOV_SubExpenseType" id="SubExpenseType"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsStandarardRateVO1Iterator" StaticList="false" Uses="LOV_GlAccount" id="GlAccount"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="SrGeography">
+      <AttrNames>
+        <Item Value="SrGeography"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="EmployeeGradeLevel">
+      <AttrNames>
+        <Item Value="EmployeeGradeLevel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="StandardCost">
+      <AttrNames>
+        <Item Value="StandardCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="EffectiveStartDate">
+      <AttrNames>
+        <Item Value="EffectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="EffectiveEndDate">
+      <AttrNames>
+        <Item Value="EffectiveEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsStandarardRateVO1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="SgsStandarardRateVO1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsStandarardRateVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

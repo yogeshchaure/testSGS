@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1" topHeight="87px">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelDashboard id="pd1" rowHeight="650px" columns="1">
+                <af:panelGroupLayout id="pgl5" layout="scroll" halign="center" valign="middle">
+                    <af:decorativeBox id="db1" topHeight="1px" inlineStyle="margin-left:3px;margin-right:3px;"
+                                      styleClass="decorativeBoxNoframeBorder">
+                        <f:facet name="top"/>
+                        <f:facet name="center">
+                            <af:panelSpringboard id="ps1" displayMode="grid"
+                                                 inlineStyle="background-color:white; min-height:100%;">
+                                <af:showDetailItem text="Process I/Co Transactions (Before Allocation)" id="sdi6"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/Review.png">
+                                    <af:region value="#{bindings.transBCostAllocationMainBTF1.regionModel}" id="r1"/>
+                                </af:showDetailItem>
+                                <!--<af:showDetailItem id="sdi7" text="Approve I/Co Transaction (Before Allocation)"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/Approved.png"></af:showDetailItem>-->
+                                <af:showDetailItem id="sdi1" text="Add / Upload Statistical Data"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/UploadData.png"></af:showDetailItem>
+                                 <af:showDetailItem id="sdi2" text="Approve Statistical Data"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/reportChecked.png"></af:showDetailItem>
+                                 <af:showDetailItem id="sdi3" text="Approve Allocated I/Co Transaction"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/approveGreen.png">
+                                    <af:region value="#{bindings.approveallocatedICoTransactionBTF1.regionModel}"
+                                               id="r2"/>
+                                </af:showDetailItem>
+                            </af:panelSpringboard>
+                        </f:facet>
+                    </af:decorativeBox>
+                </af:panelGroupLayout>
+            </af:panelDashboard>
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

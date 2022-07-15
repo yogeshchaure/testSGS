@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SgsAPInvoiceToAPPaymentVL"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.sgs.model.viewLink.SgsAPInvoiceToAPPaymentVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SgsAccPayInvoicesVO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.sgs.model.view.SgsAccPayInvoicesVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SgsAccPayInvoicesVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sgs.model.view.SgsAccPayInvoicesVO.AccPayInvoicesId"/>
+      <Item Value="com.sgs.model.view.SgsAccPayInvoicesVO.BuId"/>
+      <Item Value="com.sgs.model.view.SgsAccPayInvoicesVO.ApInvoiceNo"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SgsAPInvoiceToAPPayment"
+    Cardinality="-1"
+    Owner="com.sgs.model.view.SgsAccPayPaymentsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SgsAPInvoiceToAPPayment"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sgs.model.view.SgsAccPayPaymentsVO.AccPayInvoicesId"/>
+      <Item Value="com.sgs.model.view.SgsAccPayPaymentsVO.BuId"/>
+      <Item Value="com.sgs.model.view.SgsAccPayPaymentsVO.ApInvoiceNum"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.sgs.model.SGSModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

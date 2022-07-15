@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Allocation Rule Setup" id="pb1">
+        <f:facet name="toolbar">
+         <af:toolbar id="t1">
+            <af:button id="b1" action="back"
+                       actionListener="#{bindings.Commit.execute}"
+                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update'])}"
+                       text="Save and Close" accessKey="S"/>
+            <af:button id="b2" action="back" immediate="true"
+                       actionListener="#{bindings.Rollback.execute}" rendered="#{pageFlowScope.pAllocRuleSetAddEdit == 'EDIT'}"
+                       text="Cancel" accessKey="C"/>
+            <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                       id="b3"
+                       rendered="#{pageFlowScope.pAllocRuleSetAddEdit == 'ADD'}" action="back" immediate="true" text="Cancel"
+                       accessKey="C"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="5">
+          <af:inputText value="#{bindings.AllocationRuleId.inputValue}" label="Allocation Rule ID"
+                        required="#{bindings.AllocationRuleId.hints.mandatory}"
+                        columns="#{bindings.AllocationRuleId.hints.displayWidth}"
+                        maximumLength="#{bindings.AllocationRuleId.hints.precision}"
+                        shortDesc="#{bindings.AllocationRuleId.hints.tooltip}" id="it1">
+            <f:validator binding="#{bindings.AllocationRuleId.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.CostIdentificationId.inputValue}"
+                              label="Cost Identification ID"
+                              required="#{bindings.CostIdentificationId.hints.mandatory}"
+                              shortDesc="#{bindings.CostIdentificationId.hints.tooltip}" id="soc1">
+            <f:selectItems value="#{bindings.CostIdentificationId.items}" id="si1"/>
+            <f:validator binding="#{bindings.CostIdentificationId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.AllocationBasis.inputValue}" label="Allocation Basis"
+                              required="#{bindings.AllocationBasis.hints.mandatory}"
+                              shortDesc="#{bindings.AllocationBasis.hints.tooltip}" id="soc2">
+            <f:selectItems value="#{bindings.AllocationBasis.items}" id="si2"/>
+            <f:validator binding="#{bindings.AllocationBasis.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.OffsetAccount.inputValue}" label="Offset Account"
+                              required="#{bindings.OffsetAccount.hints.mandatory}"
+                              shortDesc="#{bindings.OffsetAccount.hints.tooltip}" id="soc3">
+            <f:selectItems value="#{bindings.OffsetAccount.items}" id="si3"/>
+            <f:validator binding="#{bindings.OffsetAccount.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.TargetAccount.inputValue}" label="Target Account"
+                              required="#{bindings.TargetAccount.hints.mandatory}"
+                              shortDesc="#{bindings.TargetAccount.hints.tooltip}" id="soc4">
+            <f:selectItems value="#{bindings.TargetAccount.items}" id="si4"/>
+            <f:validator binding="#{bindings.TargetAccount.validator}"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.EffectiveStartDate.inputValue}"
+                        label="Effective Start Date"
+                        required="#{bindings.EffectiveStartDate.hints.mandatory}"
+                        columns="#{bindings.EffectiveStartDate.hints.displayWidth}"
+                        shortDesc="#{bindings.EffectiveStartDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.EffectiveStartDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.EffectiveStartDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.EffectiveEndDate.inputValue}" label="Effective End Date"
+                        required="#{bindings.EffectiveEndDate.hints.mandatory}"
+                        columns="#{bindings.EffectiveEndDate.hints.displayWidth}"
+                        shortDesc="#{bindings.EffectiveEndDate.hints.tooltip}" id="id2">
+            <f:validator binding="#{bindings.EffectiveEndDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.EffectiveEndDate.format}"/>
+          </af:inputDate>
+          <af:inputDate value="#{bindings.UpdatedDate.inputValue}" label="Updated Date"
+                        required="#{bindings.UpdatedDate.hints.mandatory}"
+                        columns="#{bindings.UpdatedDate.hints.displayWidth}"
+                        shortDesc="#{bindings.UpdatedDate.hints.tooltip}" id="id3" readOnly="true">
+            <f:validator binding="#{bindings.UpdatedDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.UpdatedDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.UpdatedBy.inputValue}" label="Updated By"
+                        required="#{bindings.UpdatedBy.hints.mandatory}"
+                        columns="#{bindings.UpdatedBy.hints.displayWidth}"
+                        maximumLength="#{bindings.UpdatedBy.hints.precision}"
+                        shortDesc="#{bindings.UpdatedBy.hints.tooltip}" id="it2" readOnly="true">
+            <f:validator binding="#{bindings.UpdatedBy.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.22.48" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.sgs.view" ClientType="Generic">
+    <definitionFactories>
+        <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+                 className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+        <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    </definitionFactories>
+    <pageMap>
+        <page path="/jsf/welcomePage.jsf" usageId="com_sgs_view_welcomePagePageDef"/>
+        <page path="/jsff/adminPage.jsff" usageId="com_sgs_view_adminPagePageDef"/>
+        <page path="/jsff/invoicingPage.jsff" usageId="com_sgs_view_invoicingPagePageDef"/>
+        <page path="/jsff/apInvoice.jsff" usageId="com_sgs_view_apInvoicePageDef"/>
+        <page path="/jsff/contracts.jsff" usageId="com_sgs_view_contractsPageDef"/>
+        <page path="/jsff/suppliers.jsff" usageId="com_sgs_view_suppliersPageDef"/>
+        <page path="/jsff/projects.jsff" usageId="com_sgs_view_projectsPageDef"/>
+        <page path="/jsff/arInvoice.jsff" usageId="com_sgs_view_arInvoicePageDef"/>
+        <page path="/jsff/apPayments.jsff" usageId="com_sgs_view_apPaymentsPageDef"/>
+        <page path="/jsff/arReceipt.jsff" usageId="com_sgs_view_arReceiptPageDef"/>
+        <page path="/jsff/businessUnit.jsff" usageId="com_sgs_view_businessUnitPageDef"/>
+        <page path="/jsff/businessUnitForm.jsff" usageId="com_sgs_view_businessUnitFormPageDef"/>
+        <page path="/jsff/customers.jsff" usageId="com_sgs_view_customersPageDef"/>
+        <page path="/jsff/customersForm.jsff" usageId="com_sgs_view_customersFormPageDef"/>
+        <page path="/jsff/servicesForm.jsff" usageId="com_sgs_view_servicesFormPageDef"/>
+        <page path="/jsff/services.jsff" usageId="com_sgs_view_servicesPageDef"/>
+        <page path="/jsff/suppliersForm.jsff" usageId="com_sgs_view_suppliersFormPageDef"/>
+        <page path="/jsff/projectsForm.jsff" usageId="com_sgs_view_projectsFormPageDef"/>
+        <page path="/jsff/apInvoiceForm.jsff" usageId="com_sgs_view_apInvoiceFormPageDef"/>
+        <page path="/jsff/apInvoiceLines.jsff" usageId="com_sgs_view_apInvoiceLinesPageDef"/>
+        <page path="/jsff/arInvoiceForm.jsff" usageId="com_sgs_view_arInvoiceFormPageDef"/>
+        <page path="/jsff/arInvoiceLines.jsff" usageId="com_sgs_view_arInvoiceLinesPageDef"/>
+        <page path="/jsff/contractForm.jsff" usageId="com_sgs_view_contractFormPageDef"/>
+        <page path="/jsff/contractLineForm.jsff" usageId="com_sgs_view_contractLineFormPageDef"/>
+        <page path="/jsf/welcomeToSGS.jsf" usageId="com_sgs_view_welcomeToSGSPageDef"/>
+        <page path="/jsf/welcomeSGSPage.jsf" usageId="com_sgs_view_welcomeSGSPagePageDef"/>
+        <page path="/jsff/apPaymentDetails.jsff" usageId="com_sgs_view_apPaymentDetailsPageDef"/>
+        <page path="/jsff/paymentsMain.jsff" usageId="com_sgs_view_paymentsMainPageDef"/>
+        <page path="/jsff/apInvoiceMainTF.jsff" usageId="com_sgs_view_apInvoiceMainTFPageDef"/>
+        <page path="/jsff/arInvMain.jsff" usageId="com_sgs_view_arInvMainPageDef"/>
+        <page path="/jsff/arReceiptMain.jsff" usageId="com_sgs_view_arReceiptMainPageDef"/>
+        <page path="/jsff/arReceiptDtl.jsff" usageId="com_sgs_view_arReceiptDtlPageDef"/>
+        <page path="/jsff/costIdentificationRule.jsff" usageId="com_sgs_view_costIdentificationRulePageDef"/>
+        <page path="/jsff/costIdentificationRuleForm.jsff" usageId="com_sgs_view_costIdentificationRuleFormPageDef"/>
+        <page path="/jsff/transBCostAllocationForm.jsff" usageId="com_sgs_view_transBCostAllocationFormPageDef"/>
+        <page path="/jsff/transBCostAllocation.jsff" usageId="com_sgs_view_transBCostAllocationPageDef"/>
+        <page path="/jsff/SetupUpRules.jsff" usageId="com_sgs_view_SetupUpRulesPageDef"/>
+        <page path="/jsff/transactionalData.jsff" usageId="com_sgs_view_transactionalDataPageDef"/>
+        <page path="/jsff/businessUnitMaster.jsff" usageId="com_sgs_view_businessUnitMasterPageDef"/>
+        <page path="/jsff/businessUnitMasterForm.jsff" usageId="com_sgs_view_businessUnitMasterFormPageDef"/>
+        <page path="/jsff/allocationRuleSetup.jsff" usageId="com_sgs_view_allocationRuleSetupPageDef"/>
+        <page path="/jsff/allocationRuleSetupForm.jsff" usageId="com_sgs_view_allocationRuleSetupFormPageDef"/>
+        <page path="/jsff/standardRateSetup.jsff" usageId="com_sgs_view_standardRateSetupPageDef"/>
+        <page path="/jsff/standardRateSetupForm.jsff" usageId="com_sgs_view_standardRateSetupFormPageDef"/>
+        <page path="/jsff/TPASetup.jsff" usageId="com_sgs_view_TPASetupPageDef"/>
+        <page path="/jsff/TPASetupForm.jsff" usageId="com_sgs_view_TPASetupFormPageDef"/>
+        <page path="/jsff/ApproveAllocatedICoTransaction.jsff"
+              usageId="com_sgs_view_ApproveAllocatedICoTransactionPageDef"/>
+    </pageMap>
+    <pageDefinitionUsages>
+        <page id="com_sgs_view_welcomePagePageDef" path="jsf.welcomePagePageDef"/>
+        <page id="com_sgs_view_adminPagePageDef" path="jsff.adminPagePageDef"/>
+        <page id="com_sgs_view_invoicingPagePageDef" path="jsff.invoicingPagePageDef"/>
+        <page id="com_sgs_view_apInvoicePageDef" path="jsff.apInvoicePageDef"/>
+        <page id="com_sgs_view_contractsPageDef" path="jsff.contractsPageDef"/>
+        <page id="com_sgs_view_suppliersPageDef" path="jsff.suppliersPageDef"/>
+        <page id="com_sgs_view_projectsPageDef" path="jsff.projectsPageDef"/>
+        <page id="com_sgs_view_arInvoicePageDef" path="jsff.arInvoicePageDef"/>
+        <page id="com_sgs_view_apPaymentsPageDef" path="jsff.apPaymentsPageDef"/>
+        <page id="com_sgs_view_arReceiptPageDef" path="jsff.arReceiptPageDef"/>
+        <page id="com_sgs_view_businessUnitPageDef" path="jsff.businessUnitPageDef"/>
+        <page id="com_sgs_view_businessUnitFormPageDef" path="jsff.businessUnitFormPageDef"/>
+        <page id="com_sgs_view_customersPageDef" path="jsff.customersPageDef"/>
+        <page id="com_sgs_view_customersFormPageDef" path="jsff.customersFormPageDef"/>
+        <page id="com_sgs_view_servicesFormPageDef" path="jsff.servicesFormPageDef"/>
+        <page id="com_sgs_view_servicesPageDef" path="jsff.servicesPageDef"/>
+        <page id="com_sgs_view_suppliersFormPageDef" path="jsff.suppliersFormPageDef"/>
+        <page id="com_sgs_view_projectsFormPageDef" path="jsff.projectsFormPageDef"/>
+        <page id="com_sgs_view_apInvoiceFormPageDef" path="jsff.apInvoiceFormPageDef"/>
+        <page id="com_sgs_view_apInvoiceLinesPageDef" path="jsff.apInvoiceLinesPageDef"/>
+        <page id="com_sgs_view_arInvoiceFormPageDef" path="jsff.arInvoiceFormPageDef"/>
+        <page id="com_sgs_view_arInvoiceLinesPageDef" path="jsff.arInvoiceLinesPageDef"/>
+        <page id="com_sgs_view_contractFormPageDef" path="jsff.contractFormPageDef"/>
+        <page id="com_sgs_view_contractLineFormPageDef" path="jsff.contractLineFormPageDef"/>
+        <page id="com_sgs_view_welcomeToSGSPageDef" path="jsf.welcomeToSGSPageDef"/>
+        <page id="com_sgs_view_welcomeSGSPagePageDef" path="jsf.welcomeSGSPagePageDef"/>
+        <page id="com_sgs_view_apPaymentDetailsPageDef" path="jsff.apPaymentDetailsPageDef"/>
+        <page id="com_sgs_view_paymentsMainPageDef" path="jsff.paymentsMainPageDef"/>
+        <page id="com_sgs_view_apInvoiceMainTFPageDef" path="jsff.apInvoiceMainTFPageDef"/>
+        <page id="com_sgs_view_arInvMainPageDef" path="com.sgs.view.pageDefs.arInvMainPageDef"/>
+        <page id="com_sgs_view_arReceiptMainPageDef" path="jsff.arReceiptMainPageDef"/>
+        <page id="com_sgs_view_arReceiptDtlPageDef" path="jsff.arReceiptDtlPageDef"/>
+        <page id="com_sgs_view_costIdentificationRulePageDef" path="jsff.costIdentificationRulePageDef"/>
+        <page id="com_sgs_view_costIdentificationRuleFormPageDef" path="jsff.costIdentificationRuleFormPageDef"/>
+        <page id="com_sgs_view_testPageDef" path="jsf.testPageDef"/>
+        <page id="com_sgs_view_transBCostAllocationFormPageDef" path="jsff.transBCostAllocationFormPageDef"/>
+        <page id="com_sgs_view_transBCostAllocationPageDef" path="jsff.transBCostAllocationPageDef"/>
+        <page id="com_sgs_view_SetupUpRulesPageDef" path="jsff.SetupUpRulesPageDef"/>
+        <page id="com_sgs_view_transactionalDataPageDef" path="jsff.transactionalDataPageDef"/>
+        <page id="com_sgs_view_businessUnitMasterPageDef" path="jsff.businessUnitMasterPageDef"/>
+        <page id="com_sgs_view_businessUnitMasterFormPageDef" path="jsff.businessUnitMasterFormPageDef"/>
+        <page id="com_sgs_view_allocationRuleSetupPageDef" path="jsff.allocationRuleSetupPageDef"/>
+        <page id="com_sgs_view_allocationRuleSetupFormPageDef" path="jsff.allocationRuleSetupFormPageDef"/>
+        <page id="com_sgs_view_standardRateSetupPageDef" path="jsff.standardRateSetupPageDef"/>
+        <page id="com_sgs_view_standardRateSetupFormPageDef" path="jsff.standardRateSetupFormPageDef"/>
+        <page id="com_sgs_view_TPASetupPageDef" path="jsff.TPASetupPageDef"/>
+        <page id="com_sgs_view_TPASetupFormPageDef" path="jsff.TPASetupFormPageDef"/>
+        <page id="com_sgs_view_ApproveAllocatedICoTransactionPageDef"
+              path="jsff.ApproveAllocatedICoTransactionPageDef"/>
+    </pageDefinitionUsages>
+    <dataControlUsages>
+        <BC4JDataControl id="SGSAppModuleDataControl" Package="com.sgs.model.service"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="SGSAppModuleLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    </dataControlUsages>
+</Application>

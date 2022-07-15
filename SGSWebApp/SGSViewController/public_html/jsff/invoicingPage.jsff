@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelTabbed position="left" id="pt1" verticalTabMode="iconAndText">
+        <af:showDetailItem id="tab1" text="Paybales"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonAPInv;action=View']}">
+          <af:region value="#{bindings.apInvoiceBTF1.regionModel}" id="r1"/>
+        </af:showDetailItem>
+        <af:showDetailItem text="Receivables" id="sdi1"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=View']}">
+          <af:region value="#{bindings.arInvoiceBTF1.regionModel}" id="r2"/>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

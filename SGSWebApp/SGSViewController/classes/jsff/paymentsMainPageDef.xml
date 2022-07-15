@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="paymentsMainPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsApPaymentsVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsApPaymentsVO1Iterator"/>
+    <searchRegion Criteria="SgsApPaymentsVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsApPaymentsVO1Iterator" id="SgsApPaymentsVOCriteriaQuery"/>
+    <iterator Binds="SgsApInvPaymentsVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsApInvPaymentsVO1Iterator"/>
+    <searchRegion Binds="SgsApInvPaymentsVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsApInvPaymentsVO1Query"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SgsApPaymentsVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SgsApPaymentsVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="SgsApPaymentsVO1Iterator" id="SgsApPaymentsVO1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsApPaymentsVO" Name="SgsApPaymentsVO10">
+        <AttrNames>
+          <Item Value="ApInvPaymentsId"/>
+          <Item Value="BuId"/>
+          <Item Value="Amount"/>
+          <Item Value="BankNumber"/>
+          <Item Value="CheckNumber"/>
+          <Item Value="NeftNumber"/>
+          <Item Value="PaymentDate"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="UpdatedDate"/>
+          <Item Value="UpdatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SgsApInvPaymentsVO1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SgsApInvPaymentsVO1Iterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="SgsApInvPaymentsVO1Iterator" id="SgsApInvPaymentsVO1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsApInvPaymentsVO" Name="SgsApInvPaymentsVO10">
+        <AttrNames>
+          <Item Value="PaymentsId"/>
+          <Item Value="BuId"/>
+          <Item Value="ApInvPaymentsId"/>
+          <Item Value="AccPayInvoicesId"/>
+          <Item Value="AmountPaid"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="UpdatedDate"/>
+          <Item Value="UpdatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

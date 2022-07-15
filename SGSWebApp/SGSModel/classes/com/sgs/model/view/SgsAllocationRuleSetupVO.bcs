@@ -1,0 +1,33 @@
+//Groovy Scripts for com.sgs.model.view.SgsAllocationRuleSetupVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="CostIdentificationRuleList", name="pType")
+def pType_CostIdentificationRuleList_BindVariable_BoundParameter()
+{
+'COSTRULEID'
+}
+
+
+@AccessorParameterExpression(accessorName="AllocationBasisList", name="pType")
+def pType_AllocationBasisList_BindVariable_BoundParameter()
+{
+'ALLOCATION_BASIS'
+}
+
+
+@AccessorParameterExpression(accessorName="OffsetAccList", name="pType")
+def pType_OffsetAccList_BindVariable_BoundParameter()
+{
+'OFFSET_ACC'
+}
+
+
+@AccessorParameterExpression(accessorName="TargetAccList", name="pType")
+def pType_TargetAccList_BindVariable_BoundParameter()
+{
+'TARGET_ACC'
+}
+

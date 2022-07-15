@@ -1,0 +1,54 @@
+//Groovy Scripts for com.sgs.model.view.SgsRevAllocatedDataVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="StatusLOV", name="pType")
+def pType_StatusLOV_BindVariable_BoundParameter()
+{
+'RAD_STATUS'
+}
+
+
+@AccessorParameterExpression(accessorName="TransactionTypeLOV", name="pType")
+def pType_TransactionTypeLOV_BindVariable_BoundParameter()
+{
+'INTER_COM'
+}
+
+
+@AccessorParameterExpression(accessorName="AllocationRuleLOV", name="pType")
+def pType_AllocationRuleLOV_BindVariable_BoundParameter()
+{
+'ALLOCATION_RULE'
+}
+
+
+@AccessorParameterExpression(accessorName="ServiceCategoryLOV", name="pType")
+def pType_ServiceCategoryLOV_BindVariable_BoundParameter()
+{
+'SERVICE_CATEGORY'
+}
+
+
+@AccessorParameterExpression(accessorName="CostIdentificationLOV", name="pType")
+def pType_CostIdentificationLOV_BindVariable_BoundParameter()
+{
+'COST_IND'
+}
+
+
+@AccessorParameterExpression(accessorName="ActiveInactiveLOV", name="pType")
+def pType_ActiveInactiveLOV_BindVariable_BoundParameter()
+{
+'BU_STATUS'
+}
+
+
+@AccessorParameterExpression(accessorName="AccountingTreatmentLOV", name="pType")
+def pType_AccountingTreatmentLOV_BindVariable_BoundParameter()
+{
+'ACC_TREAT'
+}
+

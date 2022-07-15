@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">invoicingPage</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">225.35938</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>invoicingPage&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">217.09766</property>
+      <property
+         name="page">/jsff/invoicingPage.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+</SDM>

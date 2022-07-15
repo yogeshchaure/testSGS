@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="arReceiptPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsArReceiptVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsArReceiptVO1Iterator"/>
+        <iterator Binds="SgsArReceiptDtlVO2" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsArReceiptDtlVO2Iterator"/>
+        <searchRegion Binds="SgsArReceiptDtlVO2Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsArReceiptDtlVO2Query"/>
+    </executables>
+    <bindings>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action IterBinding="SgsArReceiptVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow" InstanceName="SGSAppModuleDataControl.SgsArReceiptVO1"
+                DataControl="SGSAppModuleDataControl"/>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="ArReceiptId">
+            <AttrNames>
+                <Item Value="ArReceiptId"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsArReceiptVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId" DTSupportsMRU="false"
+              SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="Amount">
+            <AttrNames>
+                <Item Value="Amount"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="BankNumber">
+            <AttrNames>
+                <Item Value="BankNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="NeftNumber">
+            <AttrNames>
+                <Item Value="NeftNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="CheckNumber">
+            <AttrNames>
+                <Item Value="CheckNumber"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="PaymentDate">
+            <AttrNames>
+                <Item Value="PaymentDate"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="SgsArReceiptDtlVO2Iterator" id="SgsArReceiptDtlVO2">
+            <nodeDefinition DefName="com.sgs.model.view.SgsArReceiptDtlVO" Name="SgsArReceiptDtlVO20">
+                <AttrNames>
+                    <Item Value="ReceiptDtlId"/>
+                    <Item Value="BuId"/>
+                    <Item Value="ArReceiptId"/>
+                    <Item Value="AccRecInvoicesId"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsArReceiptDtlVO2Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+    </bindings>
+</pageDefinition>

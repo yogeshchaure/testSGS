@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="welcomePagePageDef"
+                Package="jsf" SkipValidation="true">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <taskFlow id="contractsBTF1" taskFlowId="/bTaskFlow/contractsBTF.xml#contractsBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="apInvoiceBTF1" taskFlowId="/bTaskFlow/apInvoiceBTF.xml#apInvoiceBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="projectsBTF1" taskFlowId="/bTaskFlow/projectsBTF.xml#projectsBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="suppliersBTF1" taskFlowId="/bTaskFlow/suppliersBTF.xml#suppliersBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="servicesBTF1" taskFlowId="/bTaskFlow/servicesBTF.xml#servicesBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="customersBTF1" taskFlowId="/bTaskFlow/customersBTF.xml#customersBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="businessUnitBTF1" taskFlowId="/bTaskFlow/businessUnitBTF.xml#businessUnitBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="arInvMainBTF1" taskFlowId="/bTaskFlow/arInvMainBTF.xml#arInvMainBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="costIdentificationRuleBTF1"
+                  taskFlowId="/bTaskFlow/costIdentificationRuleBTF.xml#costIdentificationRuleBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="transBCostAllocationMainBTF1"
+                  taskFlowId="/bTaskFlow/transBCostAllocationMainBTF.xml#transBCostAllocationMainBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="setUpRulesBTF1" taskFlowId="/bTaskFlow/setUpRulesBTF.xml#setUpRulesBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="transactionalDataBTF1" taskFlowId="/bTaskFlow/transactionalDataBTF.xml#transactionalDataBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="processMainBTF1" taskFlowId="/bTaskFlow/processMainBTF.xml#processMainBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="reportMainBTF1" taskFlowId="/bTaskFlow/reportMainBTF.xml#reportMainBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="securityMainBTF1" taskFlowId="/bTaskFlow/securityMainBTF.xml#securityMainBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    </executables>
+    <bindings/>
+</pageDefinition>

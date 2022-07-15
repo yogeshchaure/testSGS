@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="ApproveAllocatedICoTransactionPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsRevAllocatedDataVO" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsRevAllocatedDataVOIterator"/>
+    <searchRegion Criteria="SgsRevAllocatedDataVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" Binds="SgsRevAllocatedDataVOIterator"
+                  id="SgsRevAllocatedDataVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsRevAllocatedDataVOIterator" id="SgsRevAllocatedDataVO">
+      <nodeDefinition DefName="com.sgs.model.view.SgsRevAllocatedDataVO" Name="SgsRevAllocatedDataVO0">
+        <AttrNames>
+          <Item Value="SelectInd"/>
+          <Item Value="AllocationId"/>
+          <Item Value="CostIdentificationId"/>
+          <Item Value="TpaApplicability"/>
+          <Item Value="AllocationRuleId"/>
+          <Item Value="TransactionCategory"/>
+          <Item Value="SourceGlAccount"/>
+          <Item Value="SourceBu"/>
+          <Item Value="SourceJobCode"/>
+          <Item Value="SourceAmount"/>
+          <Item Value="TargetAccount"/>
+          <Item Value="TargetBu"/>
+          <Item Value="TargetJobCode"/>
+          <Item Value="ServiceCategory"/>
+          <Item Value="AccountingTreatment"/>
+          <Item Value="MarkUpRage"/>
+          <Item Value="Amount"/>
+          <Item Value="MarkUpAmount"/>
+          <Item Value="TotalAmount"/>
+          <Item Value="TargetTransaction"/>
+          <Item Value="Status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
+

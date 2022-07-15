@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelTabbed position="left" id="pt1" verticalTabMode="iconAndText">
+        <af:showDetailItem id="tab1" text="Business Unit" immediate="true"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonBU;action=View']}">
+          <af:region value="#{bindings.businessUnitBTF1.regionModel}" id="r3"/>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab2" text="Customers" immediate="true"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonCust;action=View']}">
+          <af:region value="#{bindings.customersBTF1.regionModel}" id="r4"/>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab3" text="Services" immediate="true"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonService;action=View']}">
+          <af:region value="#{bindings.servicesBTF1.regionModel}" id="r5"/>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab4" text="Suppliers" immediate="true"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonSupplier;action=View']}">
+          <af:region value="#{bindings.suppliersBTF1.regionModel}" id="r1"/>
+        </af:showDetailItem>
+        <af:showDetailItem id="tab5" text="Projects" immediate="true"
+                           rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonProject;action=View']}">
+          <af:region value="#{bindings.projectsBTF1.regionModel}" id="r2"/>
+        </af:showDetailItem>
+      </af:panelTabbed>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

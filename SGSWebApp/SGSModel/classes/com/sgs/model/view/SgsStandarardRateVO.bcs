@@ -1,0 +1,26 @@
+//Groovy Scripts for com.sgs.model.view.SgsStandarardRateVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="ExpenseTypeList", name="pType")
+def pType_ExpenseTypeList_BindVariable_BoundParameter()
+{
+'EXPENSE_TYPE'
+}
+
+
+@AccessorParameterExpression(accessorName="SubExpenseTypeList", name="pType")
+def pType_SubExpenseTypeList_BindVariable_BoundParameter()
+{
+'SUB_EXP_TYPE'
+}
+
+
+@AccessorParameterExpression(accessorName="GLAccountList", name="pType")
+def pType_GLAccountList_BindVariable_BoundParameter()
+{
+'GL_ACC'
+}
+

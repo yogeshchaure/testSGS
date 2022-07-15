@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48"
+                id="transBCostAllocationFormPageDef" Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsTransBCostAllocationView1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsTransBCostAllocationView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="ApprovalRequestType">
+      <AttrNames>
+        <Item Value="ApprovalRequestType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="ExtractId">
+      <AttrNames>
+        <Item Value="ExtractId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="RectificationId">
+      <AttrNames>
+        <Item Value="RectificationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="LeagalEntity">
+      <AttrNames>
+        <Item Value="LeagalEntity"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_JobCode" id="JobCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="GlAccount">
+      <AttrNames>
+        <Item Value="GlAccount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="OprationalUnit">
+      <AttrNames>
+        <Item Value="OprationalUnit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="DepartmentId">
+      <AttrNames>
+        <Item Value="DepartmentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="AffilateCode">
+      <AttrNames>
+        <Item Value="AffilateCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="VerticalCode">
+      <AttrNames>
+        <Item Value="VerticalCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="HorizontalCode">
+      <AttrNames>
+        <Item Value="HorizontalCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="BookCode">
+      <AttrNames>
+        <Item Value="BookCode"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_SourceSystem"
+          id="SourceSystem" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_SourceModule"
+          id="SourceModule" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="SourceTable">
+      <AttrNames>
+        <Item Value="SourceTable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactinPeriod">
+      <AttrNames>
+        <Item Value="TransactinPeriod"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="GlDate">
+      <AttrNames>
+        <Item Value="GlDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactionDate">
+      <AttrNames>
+        <Item Value="TransactionDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactionName">
+      <AttrNames>
+        <Item Value="TransactionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactionType">
+      <AttrNames>
+        <Item Value="TransactionType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactionCurrency">
+      <AttrNames>
+        <Item Value="TransactionCurrency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="TransactionAmount">
+      <AttrNames>
+        <Item Value="TransactionAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="FunctionalCurrency">
+      <AttrNames>
+        <Item Value="FunctionalCurrency"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="ForeignExchangeRate">
+      <AttrNames>
+        <Item Value="ForeignExchangeRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="AccountTreatment">
+      <AttrNames>
+        <Item Value="AccountTreatment"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="ExtractedBy">
+      <AttrNames>
+        <Item Value="ExtractedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="ExtractedDate">
+      <AttrNames>
+        <Item Value="ExtractedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_TrasactionStatus"
+          id="TrasactionStatus" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="CreatedDate">
+      <AttrNames>
+        <Item Value="CreatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTransBCostAllocationView1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_CirId" id="CirId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action IterBinding="SgsTransBCostAllocationView1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsTransBCostAllocationView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_TransactionCategory"
+          id="TransactionCategory1" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTransBCostAllocationView1Iterator" StaticList="false" Uses="LOV_ServiceCategory"
+          id="ServiceCategory" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

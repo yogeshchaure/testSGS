@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+    <af:panelGroupLayout id="pgl1" layout="vertical" partialTriggers="qryId2">
+            <af:panelBox text="Payments" id="pb4">
+              <f:facet name="toolbar"/>
+              <af:panelHeader text=" " id="ph2">
+            <af:query id="qryId2" headerText="Search" disclosed="true"
+                          value="#{bindings.SgsApPaymentsVOCriteriaQuery.queryDescriptor}"
+                          model="#{bindings.SgsApPaymentsVOCriteriaQuery.queryModel}"
+                          queryListener="#{bindings.SgsApPaymentsVOCriteriaQuery.processQuery}"
+                          queryOperationListener="#{bindings.SgsApPaymentsVOCriteriaQuery.processQueryOperation}"
+                          saveQueryMode="hidden"/>
+              </af:panelHeader>
+              <af:panelCollection id="pc4" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t9">
+                    <af:button id="b10" shortDesc="Export to Excel" icon="/resources/icons/microsoft-excel.png"
+                               disabled="#{bindings.SgsApPaymentsVO1.estimatedRowCount &lt;= 0}">
+                      <af:exportCollectionActionListener type="excelHTML" exportedId="t7"/>
+                    </af:button>
+                    <af:button actionListener="#{bindings.CreateInsert.execute}"
+                               disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonAPInv;action=Update']) ? true : (!bindings.CreateInsert.enabled)}" id="b11" icon="/resources/icons/plus.png"
+                               action="createPayment"/>
+                <af:button
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonAPInv;action=Update']) ? true : (!bindings.Delete.enabled)}" id="b12" icon="/resources/icons/delete.png"
+                               action="#{pageFlowScope.PayablesBean.deletePayment}"/>
+              </af:toolbar>
+                </f:facet>
+            <af:table value="#{bindings.SgsApPaymentsVO1.collectionModel}" var="row"
+                          rows="#{bindings.SgsApPaymentsVO1.rangeSize}"
+                          emptyText="#{bindings.SgsApPaymentsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.SgsApPaymentsVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.SgsApPaymentsVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.SgsApPaymentsVO1.rangeSize}"
+                          filterModel="#{bindings.SgsApPaymentsVOCriteriaQuery.queryDescriptor}" filterVisible="false"
+                          queryListener="#{bindings.SgsApPaymentsVOCriteriaQuery.processQuery}" varStatus="vs" id="t7"
+                          styleClass="AFStretchWidth" partialTriggers="::b11 ::b12">
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.ApInvPaymentsId.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.ApInvPaymentsId.label}" id="c21"
+                             align="center" width="10%" inlineStyle="text-align:left;">
+                    <!--<af:outputText value="#{row.ApInvPaymentsId}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.ApInvPaymentsId.tooltip}" id="ot13">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.SgsApPaymentsVO1.hints.ApInvPaymentsId.format}"/>
+                    </af:outputText>-->
+                    <af:link text="#{row.ApInvPaymentsId}" id="l3" inlineStyle="font-weight:bold;"
+                             action="editPayment"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.BuId.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.BuId.label}" id="c22" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                        required="#{bindings.SgsApPaymentsVO1.hints.BuId.mandatory}"
+                                        shortDesc="#{bindings.SgsApPaymentsVO1.hints.BuId.tooltip}" readOnly="true"
+                                        id="soc7">
+                      <f:selectItems value="#{row.bindings.BuId.items}" id="si7"/>
+                      <f:validator binding="#{row.bindings.BuId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.Amount.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.Amount.label}" id="c23" align="center"
+                             width="10%" inlineStyle="text-align:right;">
+                    <af:outputText value="#{row.Amount}" shortDesc="#{bindings.SgsApPaymentsVO1.hints.Amount.tooltip}"
+                                   id="ot14">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.SgsApPaymentsVO1.hints.Amount.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.BankNumber.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.BankNumber.label}" id="c24" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.BankNumber}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.BankNumber.tooltip}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.CheckNumber.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.CheckNumber.label}" id="c25" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.CheckNumber}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.CheckNumber.tooltip}" id="ot16"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.NeftNumber.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.NeftNumber.label}" id="c26" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.NeftNumber}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.NeftNumber.tooltip}" id="ot17"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.PaymentDate.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.PaymentDate.label}" id="c27" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{bindings.SgsApPaymentsVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.PaymentDate.value}"
+                                    id="id4">
+                        <af:convertDateTime pattern="#{bindings.SgsApPaymentsVO1.hints.PaymentDate.format}"/>
+                      </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.PaymentDate}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.PaymentDate.tooltip}" id="ot18">
+                      <af:convertDateTime pattern="#{bindings.SgsApPaymentsVO1.hints.PaymentDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.CreatedDate.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.CreatedDate.label}" id="c28" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{bindings.SgsApPaymentsVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                    id="id5">
+                        <af:convertDateTime pattern="#{bindings.SgsApPaymentsVO1.hints.CreatedDate.format}"/>
+                      </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.CreatedDate}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.CreatedDate.tooltip}" id="ot19">
+                      <af:convertDateTime pattern="#{bindings.SgsApPaymentsVO1.hints.CreatedDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApPaymentsVO1.hints.CreatedBy.name}" filterable="true"
+                             headerText="#{bindings.SgsApPaymentsVO1.hints.CreatedBy.label}" id="c29" align="center"
+                             width="10%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.CreatedBy}"
+                                   shortDesc="#{bindings.SgsApPaymentsVO1.hints.CreatedBy.tooltip}" id="ot20"/>
+                  </af:column>
+                </af:table>
+                <f:facet name="statusbar"/>
+              </af:panelCollection>
+            </af:panelBox>
+            <af:panelBox text="Payment Details" id="pb5">
+              <f:facet name="toolbar"/>
+              <af:panelCollection id="pc5" styleClass="AFStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t10">
+                    <af:button id="b15" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                               disabled="#{bindings.SgsApInvPaymentsVO1.estimatedRowCount &lt;= 0}">
+                      <af:exportCollectionActionListener type="excelHTML" exportedId="t8"/>
+                    </af:button>
+                    <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                               disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonAPInv;action=Update']) ? true : (bindings.SgsApPaymentsVO1.estimatedRowCount &lt;=0)}" id="b14" icon="/resources/icons/plus.png"
+                               action="createPayDtl"/>
+                    <af:button
+                               disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonAPInv;action=Update']) ? true : (!bindings.Delete1.enabled)}" id="b13" icon="/resources/icons/delete.png"
+                               action="#{pageFlowScope.PayablesBean.deletePaymentDtl}"/>
+
+              </af:toolbar>
+                </f:facet>
+           
+            <af:table value="#{bindings.SgsApInvPaymentsVO1.collectionModel}" var="row"
+                          rows="#{bindings.SgsApInvPaymentsVO1.rangeSize}"
+                          emptyText="#{bindings.SgsApInvPaymentsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.SgsApInvPaymentsVO1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.SgsApInvPaymentsVO1.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.SgsApInvPaymentsVO1.rangeSize}"
+                          filterModel="#{bindings.SgsApInvPaymentsVO1Query.queryDescriptor}" filterVisible="false"
+                          queryListener="#{bindings.SgsApInvPaymentsVO1Query.processQuery}" varStatus="vs" id="t8"
+                          styleClass="AFStretchWidth" partialTriggers="::b13 ::b14">
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.PaymentsId.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.PaymentsId.label}" id="c30"
+                             align="center" width="12%" inlineStyle="text-align:left;">
+                    <!--<af:outputText value="#{row.PaymentsId}"
+                                   shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.PaymentsId.tooltip}" id="ot21">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.SgsApInvPaymentsVO1.hints.PaymentsId.format}"/>
+                    </af:outputText>-->
+                    <af:link text="#{row.PaymentsId}" id="l4" action="editPayDtl" inlineStyle="font-weight:bold;"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.BuId.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.BuId.label}" id="c31" align="center"
+                             width="12%" inlineStyle="text-align:left;">
+                    <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                        required="#{bindings.SgsApInvPaymentsVO1.hints.BuId.mandatory}"
+                                        shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.BuId.tooltip}" readOnly="true"
+                                        id="soc8">
+                      <f:selectItems value="#{row.bindings.BuId.items}" id="si8"/>
+                      <f:validator binding="#{row.bindings.BuId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.ApInvPaymentsId.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.ApInvPaymentsId.label}" id="c32"
+                             align="center" width="12%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.ApInvPaymentsId}"
+                                   shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.ApInvPaymentsId.tooltip}" id="ot22">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.SgsApInvPaymentsVO1.hints.ApInvPaymentsId.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.AccPayInvoicesId.name}"
+                             filterable="true" headerText="#{bindings.SgsApInvPaymentsVO1.hints.AccPayInvoicesId.label}"
+                             id="c33" align="center" width="12%" inlineStyle="text-align:left;">
+                    <af:selectOneChoice value="#{row.bindings.AccPayInvoicesId.inputValue}"
+                                        label="#{row.bindings.AccPayInvoicesId.label}"
+                                        required="#{bindings.SgsApInvPaymentsVO1.hints.AccPayInvoicesId.mandatory}"
+                                        shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.AccPayInvoicesId.tooltip}"
+                                        readOnly="true" id="soc9">
+                      <f:selectItems value="#{row.bindings.AccPayInvoicesId.items}" id="si9"/>
+                      <f:validator binding="#{row.bindings.AccPayInvoicesId.validator}"/>
+                    </af:selectOneChoice>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.AmountPaid.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.AmountPaid.label}" id="c34"
+                             align="center" width="12%" inlineStyle="text-align:right;">
+                    <af:outputText value="#{row.AmountPaid}"
+                                   shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.AmountPaid.tooltip}" id="ot23">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.SgsApInvPaymentsVO1.hints.AmountPaid.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.CreatedDate.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.CreatedDate.label}" id="c35"
+                             align="center" width="12%" inlineStyle="text-align:left;">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{bindings.SgsApInvPaymentsVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                    id="id6">
+                        <af:convertDateTime pattern="#{bindings.SgsApInvPaymentsVO1.hints.CreatedDate.format}"/>
+                      </af:inputDate>
+                    </f:facet>
+                    <af:outputText value="#{row.CreatedDate}"
+                                   shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.CreatedDate.tooltip}" id="ot24">
+                      <af:convertDateTime pattern="#{bindings.SgsApInvPaymentsVO1.hints.CreatedDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.SgsApInvPaymentsVO1.hints.CreatedBy.name}" filterable="true"
+                             headerText="#{bindings.SgsApInvPaymentsVO1.hints.CreatedBy.label}" id="c36" align="center"
+                             width="12%" inlineStyle="text-align:left;">
+                    <af:outputText value="#{row.CreatedBy}"
+                                   shortDesc="#{bindings.SgsApInvPaymentsVO1.hints.CreatedBy.tooltip}" id="ot25"/>
+                  </af:column>
+                </af:table>
+                <f:facet name="statusbar"/>
+              </af:panelCollection>
+            </af:panelBox>
+          </af:panelGroupLayout>    
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

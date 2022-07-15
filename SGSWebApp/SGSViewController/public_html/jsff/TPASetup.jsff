@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelBox text="TPA Master" id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:panelHeader text=" " id="ph1">
+                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                  value="#{bindings.SgsTpaMasterVOCriteriaQuery.queryDescriptor}"
+                                  model="#{bindings.SgsTpaMasterVOCriteriaQuery.queryModel}"
+                                  queryListener="#{bindings.SgsTpaMasterVOCriteriaQuery.processQuery}"
+                                  queryOperationListener="#{bindings.SgsTpaMasterVOCriteriaQuery.processQueryOperation}"
+                                  resultComponentId="::pc1:resId1" saveQueryMode="hidden" rows="2" maxColumns="2"/>
+                    </af:panelHeader>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1">
+                                <af:button id="b7" icon="/resources/icons/microsoft-excel.png"
+                                           shortDesc="Export to Excel"
+                                           disabled="#{bindings.SgsTpaMasterVO1.estimatedRowCount &lt;= 0}">
+                                    <af:exportCollectionActionListener type="excelHTML" exportedId="resId1"
+                                                                       filename="TPAMasterNew.xls"/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                           disabled="#{!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']}"
+                                           id="b1" action="ADD" icon="/resources/icons/plus.png"
+                                           shortDesc="Create/Add Cost Identification Rule"/>
+                                <af:button disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.Delete.enabled)}"
+                                           id="b2" shortDesc="Delete Business Unit" icon="/resources/icons/delete.png"
+                                           action="#{pageFlowScope.TPAMaterBean.deleteTPAmaster}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.SgsTpaMasterVO1.collectionModel}" var="row"
+                                  rows="#{bindings.SgsTpaMasterVO1.rangeSize}"
+                                  emptyText="#{bindings.SgsTpaMasterVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.SgsTpaMasterVO1.rangeSize}" id="resId1"
+                                  styleClass="AFStretchWidth" columnStretching="column:resId1c1">
+                            <af:column headerText="TPA ID" id="resId1c1">
+                                <!--<af:outputText value="#{row.TpaId}"
+                                               shortDesc="#{bindings.SgsTpaMasterVO1.hints.TpaId.tooltip}" id="ot1"/>-->
+                                <af:link text="#{row.TpaId}" id="l1" action="EDIT" inlineStyle="font-weight:bold;"/>
+                            </af:column>
+                            <af:column headerText="Legal Entity (Service Provider)" id="resId1c2">
+                                <af:selectOneChoice value="#{row.bindings.LeServiceProvider.inputValue}"
+                                                    label="#{row.bindings.LeServiceProvider.label}"
+                                                    required="#{bindings.SgsTpaMasterVO1.hints.LeServiceProvider.mandatory}"
+                                                    shortDesc="#{bindings.SgsTpaMasterVO1.hints.LeServiceProvider.tooltip}"
+                                                    readOnly="true" id="soc1">
+                                    <f:selectItems value="#{row.bindings.LeServiceProvider.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.LeServiceProvider.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Legal Entity (Service Receiver)" id="resId1c3">
+                                <af:selectOneChoice value="#{row.bindings.LeServiceReceiver.inputValue}"
+                                                    label="#{row.bindings.LeServiceReceiver.label}"
+                                                    required="#{bindings.SgsTpaMasterVO1.hints.LeServiceReceiver.mandatory}"
+                                                    shortDesc="#{bindings.SgsTpaMasterVO1.hints.LeServiceReceiver.tooltip}"
+                                                    readOnly="true" id="soc2">
+                                    <f:selectItems value="#{row.bindings.LeServiceReceiver.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.LeServiceReceiver.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Pass-Through" id="resId1c4">
+                                <af:selectOneChoice value="#{row.bindings.PassThrough.inputValue}"
+                                                    label="#{row.bindings.PassThrough.label}"
+                                                    required="#{bindings.SgsTpaMasterVO1.hints.PassThrough.mandatory}"
+                                                    shortDesc="#{bindings.SgsTpaMasterVO1.hints.PassThrough.tooltip}"
+                                                    readOnly="true" id="soc3">
+                                    <f:selectItems value="#{row.bindings.PassThrough.items}" id="si3"/>
+                                    <f:validator binding="#{row.bindings.PassThrough.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Pass-Through BU" id="resId1c5">
+                                <af:selectOneChoice value="#{row.bindings.PassThroughBu.inputValue}"
+                                                    label="#{row.bindings.PassThroughBu.label}"
+                                                    required="#{bindings.SgsTpaMasterVO1.hints.PassThroughBu.mandatory}"
+                                                    shortDesc="#{bindings.SgsTpaMasterVO1.hints.PassThroughBu.tooltip}"
+                                                    readOnly="true" id="soc4">
+                                    <f:selectItems value="#{row.bindings.PassThroughBu.items}" id="si4"/>
+                                    <f:validator binding="#{row.bindings.PassThroughBu.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Effective End Date" id="resId1c6">
+                                <af:outputText value="#{row.EffectiveEndDate}"
+                                               shortDesc="#{bindings.SgsTpaMasterVO1.hints.EffectiveEndDate.tooltip}"
+                                               id="ot2">
+                                    <af:convertDateTime pattern="#{bindings.SgsTpaMasterVO1.hints.EffectiveEndDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelGroupLayout>
+            </af:panelBox>
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

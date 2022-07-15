@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48"
+                id="costIdentificationRuleFormPageDef" Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsCostIdentificationRuleView1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsCostIdentificationRuleView1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="SgsCostIdentificationRuleView1Iterator" StaticList="false" Uses="LOV_RuleId" id="RuleId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsCostIdentificationRuleView1Iterator" StaticList="false" Uses="LOV_GlId" id="GlId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsCostIdentificationRuleView1Iterator" StaticList="false" Uses="LOV_JobCode" id="JobCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsCostIdentificationRuleView1Iterator" StaticList="false" Uses="LOV_AccountTratment"
+          id="AccountTratment" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsCostIdentificationRuleView1Iterator" StaticList="false" Uses="LOV_ServiceCategory"
+          id="ServiceCategory" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsCostIdentificationRuleView1Iterator" id="EffectiveFrom">
+      <AttrNames>
+        <Item Value="EffectiveFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsCostIdentificationRuleView1Iterator" id="EffectiveTo">
+      <AttrNames>
+        <Item Value="EffectiveTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsCostIdentificationRuleView1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsCostIdentificationRuleView1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="SgsCostIdentificationRuleView1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsCostIdentificationRuleView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

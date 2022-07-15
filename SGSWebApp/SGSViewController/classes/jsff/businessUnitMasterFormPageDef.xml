@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="businessUnitMasterFormPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsBusinessUnitMasterVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsBusinessUnitMasterVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="BuName">
+      <AttrNames>
+        <Item Value="BuName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_LeagalEntity" id="LeagalEntity"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_BuGeography" id="BuGeography"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_BuZone" id="BuZone"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_BusinessControllers"
+          id="BusinessControllers" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_BuStatus" id="BuStatus"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="EffectiveStartDate">
+      <AttrNames>
+        <Item Value="EffectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="EffectiveEndDate">
+      <AttrNames>
+        <Item Value="EffectiveEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="AlternateBu">
+      <AttrNames>
+        <Item Value="AlternateBu"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_NettingApplicability"
+          id="NettingApplicability" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_SubLedgerApplicability"
+          id="SubLedgerApplicability" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="ICoSupplierName">
+      <AttrNames>
+        <Item Value="ICoSupplierName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="ICoCustomerName">
+      <AttrNames>
+        <Item Value="ICoCustomerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsBusinessUnitMasterVO1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="SgsBusinessUnitMasterVO1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsBusinessUnitMasterVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <list IterBinding="SgsBusinessUnitMasterVO1Iterator" StaticList="false" Uses="LOV_Currency" id="Currency1"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

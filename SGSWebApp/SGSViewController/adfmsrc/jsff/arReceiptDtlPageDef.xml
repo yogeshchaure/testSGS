@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="arReceiptDtlPageDef"
+                Package="jsff" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsArReceiptVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsArReceiptVO1Iterator"/>
+    <iterator Binds="SgsArReceiptDtlVO2" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsArReceiptDtlVO2Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="ArReceiptId">
+      <AttrNames>
+        <Item Value="ArReceiptId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsArReceiptVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="Amount">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="BankNumber">
+      <AttrNames>
+        <Item Value="BankNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="NeftNumber">
+      <AttrNames>
+        <Item Value="NeftNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="CheckNumber">
+      <AttrNames>
+        <Item Value="CheckNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="PaymentDate">
+      <AttrNames>
+        <Item Value="PaymentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="CreatedDate">
+      <AttrNames>
+        <Item Value="CreatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptVO1Iterator" id="CreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsArReceiptDtlVO2Iterator" id="ReceiptDtlId">
+      <AttrNames>
+        <Item Value="ReceiptDtlId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsArReceiptDtlVO2Iterator" StaticList="false" Uses="LOV_AccRecInvoicesId"
+          id="AccRecInvoicesId" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsArReceiptDtlVO2Iterator" id="AmountPaid">
+      <AttrNames>
+        <Item Value="AmountPaid"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SGSAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SGSAppModuleDataControl"/>
+    <action IterBinding="SgsArReceiptDtlVO2Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="SgsArReceiptDtlVO2Iterator" StaticList="false" Uses="LOV_BuId" id="BuId1"/>
+  </bindings>
+</pageDefinition>

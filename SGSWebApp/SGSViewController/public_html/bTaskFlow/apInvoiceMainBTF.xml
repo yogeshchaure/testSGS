@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="apInvoiceMainBTF">
+    <default-activity>apInvoice</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__11">
+      <managed-bean-name>payablesBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.PayablesBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="apInvoice">
+      <page>/jsff/apInvoice.jsff</page>
+    </view>
+    <task-flow-call id="apInvoiceFormCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/apInvoiceFormBTF.xml</document>
+        <id>apInvoiceFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>pAddEditAPInv</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="apInvoiceFormEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/apInvoiceFormBTF.xml</document>
+        <id>apInvoiceFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>pAddEditAPInv</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="apInvoiceLinesCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/apInvoiceLinesBTF.xml</document>
+        <id>apInvoiceLines</id>
+      </task-flow-reference>
+      <input-parameter id="__8">
+        <name>pAddEditLine</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="apInvoiceLinesEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/apInvoiceLinesBTF.xml</document>
+        <id>apInvoiceLines</id>
+      </task-flow-reference>
+      <input-parameter id="__9">
+        <name>pAddEditLine</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>apInvoice</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>create</from-outcome>
+        <to-activity-id>apInvoiceFormCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>edit</from-outcome>
+        <to-activity-id>apInvoiceFormEdit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>createAPLine</from-outcome>
+        <to-activity-id>apInvoiceLinesCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>editAPLine</from-outcome>
+        <to-activity-id>apInvoiceLinesEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

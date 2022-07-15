@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelBox id="pb1" text="Business Units">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:panelGroupLayout layout="vertical" id="pgl2">
+                        <af:panelHeader text=" " id="ph1">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.findByNameORDescVCQuery.queryDescriptor}"
+                                      model="#{bindings.findByNameORDescVCQuery.queryModel}"
+                                      queryListener="#{bindings.findByNameORDescVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.findByNameORDescVCQuery.processQueryOperation}"
+                                      saveQueryMode="hidden"/>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth" partialTriggers="::qryId1">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                        <af:toolbar id="t2">
+                            <af:button id="b7" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                                       disabled="#{bindings.SgsBusinessUnitsVO1.estimatedRowCount &lt;= 0}">
+                                <af:exportCollectionActionListener type="excelHTML" exportedId="t1"
+                                                                   filename="BusinessUnits.xls"/>
+                            </af:button>
+                            <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                       disabled="#{!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonBU;action=Update']}"
+                                       id="b1" action="buFormAdd" icon="/resources/icons/plus.png"
+                                       shortDesc="Create/Add Business Unit"/>
+                            <af:button
+                                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonBU;action=Update']) ? true : (!bindings.Delete.enabled)}"
+                                       id="b2" shortDesc="Delete Business Unit" icon="/resources/icons/delete.png"
+                                       action="#{pageFlowScope.BusinessUnitBean.deleteBUAction}"/>
+                            <!--<af:button id="b3" shortDesc="filter" icon="/resources/icons/filter-icon.png"
+                                       disabled="#{!(bindings.SgsBusinessUnitsVO1Iterator.estimatedRowCount >0)}"
+                                       partialTriggers="::qryId1"
+                                       action="#{pageFlowScope.BusinessUnitBean.getFilterByClick}"
+                                       binding="#{pageFlowScope.BusinessUnitBean.filterButton}" rendered="false"/>-->
+                        </af:toolbar>
+                    </f:facet>
+                    <af:table value="#{bindings.SgsBusinessUnitsVO1.collectionModel}" var="row"
+                              rows="#{bindings.SgsBusinessUnitsVO1.rangeSize}"
+                              emptyText="#{bindings.SgsBusinessUnitsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.SgsBusinessUnitsVO1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.SgsBusinessUnitsVO1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.SgsBusinessUnitsVO1.rangeSize}"
+                              queryListener="#{bindings.findByNameORDescVCQuery.processQuery}" varStatus="vs" id="t1"
+                              partialTriggers="::b1 ::b2" styleClass="AFStritchWidth"
+                              filterModel="#{bindings.findByNameORDescVCQuery.queryDescriptor}">
+                        <af:column sortProperty="#{bindings.SgsBusinessUnitsVO1.hints.BuName.name}" filterable="true"
+                                   headerText="#{bindings.SgsBusinessUnitsVO1.hints.BuName.label}" id="c1" width="25%"
+                                   align="center" inlineStyle="text-align:left;">
+                            <!--<af:outputText value="#{row.BuName}" shortDesc="#{bindings.SgsBusinessUnitsVO1.hints.BuName.tooltip}"
+                             id="ot2" inlineStyle="font-weight:bold;"/>-->
+                            <af:link text="#{row.BuName}" id="l1" inlineStyle="font-weight:bold;" action="buFormEdit"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SgsBusinessUnitsVO1.hints.BuDesc.name}" filterable="true"
+                                   headerText="#{bindings.SgsBusinessUnitsVO1.hints.BuDesc.label}" id="c2" width="25%"
+                                   align="center" inlineStyle="text-align:left;">
+                            <af:outputText value="#{row.BuDesc}"
+                                           shortDesc="#{bindings.SgsBusinessUnitsVO1.hints.BuDesc.tooltip}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SgsBusinessUnitsVO1.hints.CreatedDate.name}"
+                                   filterable="true"
+                                   headerText="#{bindings.SgsBusinessUnitsVO1.hints.CreatedDate.label}" id="c3"
+                                   width="25%" align="center" inlineStyle="text-align:left;">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.findByNameORDescVCQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                              id="id1">
+                                    <af:convertDateTime pattern="#{bindings.SgsBusinessUnitsVO1.hints.CreatedDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:outputText value="#{row.CreatedDate}"
+                                           shortDesc="#{bindings.SgsBusinessUnitsVO1.hints.CreatedDate.tooltip}"
+                                           id="ot4">
+                                <af:convertDateTime pattern="#{bindings.SgsBusinessUnitsVO1.hints.CreatedDate.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SgsBusinessUnitsVO1.hints.CreatedBy.name}" filterable="true"
+                                   headerText="#{bindings.SgsBusinessUnitsVO1.hints.CreatedBy.label}" id="c4"
+                                   width="25%" align="center" inlineStyle="text-align:left;">
+                            <af:outputText value="#{row.CreatedBy}"
+                                           shortDesc="#{bindings.SgsBusinessUnitsVO1.hints.CreatedBy.tooltip}"
+                                           id="ot5"/>
+                        </af:column>
+                    </af:table>
+                </af:panelCollection>
+            </af:panelBox>
+        </f:facet>
+    </af:panelStretchLayout>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:BusinessUnitBean-->
+</ui:composition>

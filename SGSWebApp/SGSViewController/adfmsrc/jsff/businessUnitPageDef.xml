@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="businessUnitPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsBusinessUnitsVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsBusinessUnitsVO1Iterator"/>
+        <searchRegion Criteria="findByNameORDescVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsBusinessUnitsVO1Iterator" id="findByNameORDescVCQuery"/>
+    </executables>
+    <bindings>
+        <action IterBinding="SgsBusinessUnitsVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsBusinessUnitsVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="SgsBusinessUnitsVO1Iterator" id="SgsBusinessUnitsVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsBusinessUnitsVO" Name="SgsBusinessUnitsVO10">
+                <AttrNames>
+                    <Item Value="BuName"/>
+                    <Item Value="BuDesc"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true"
+                Action="commitTransaction"/>
+    </bindings>
+</pageDefinition>

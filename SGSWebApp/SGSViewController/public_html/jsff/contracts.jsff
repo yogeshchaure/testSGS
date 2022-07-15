@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical" partialTriggers="::qryId1">
+        <af:panelBox text="Contracts" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelGroupLayout layout="vertical" id="pgl2">
+            <af:panelHeader text=" " id="ph1">
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.SgsContractHeaderVOCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.SgsContractHeaderVOCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.SgsContractHeaderVOCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.SgsContractHeaderVOCriteriaQuery.processQueryOperation}"
+                        saveQueryMode="hidden"/>
+            </af:panelHeader>
+          </af:panelGroupLayout>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:button id="b7" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsContractHeaderVO1.estimatedRowCount &lt;= 0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="t1" filename="Contracts.xls"/>
+                </af:button>
+                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.CreateInsert.enabled)}"
+                           id="b1" icon="/resources/icons/plus.png" action="createCon"/>
+                <af:button disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.Delete.enabled)}"
+                           id="b2" icon="/resources/icons/delete.png"
+                           action="#{pageFlowScope.BusinessUnitMasterBean.deleteBUMaster}"/>
+              </af:toolbar>
+            </f:facet>
+            <af:table value="#{bindings.SgsContractHeaderVO1.collectionModel}" var="row"
+                      rows="#{bindings.SgsContractHeaderVO1.rangeSize}"
+                      emptyText="#{bindings.SgsContractHeaderVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SgsContractHeaderVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SgsContractHeaderVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.SgsContractHeaderVO1.rangeSize}"
+                      filterModel="#{bindings.SgsContractHeaderVOCriteriaQuery.queryDescriptor}" 
+                      queryListener="#{bindings.SgsContractHeaderVOCriteriaQuery.processQuery}" varStatus="vs" id="t1"
+                      styleClass="AFStretchWidth"  partialTriggers="::b1 ::b2">
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.ConNo.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.ConNo.label}" id="c1" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <!--<af:outputText value="#{row.ConNo}" shortDesc="#{bindings.SgsContractHeaderVO1.hints.ConNo.tooltip}"
+                               id="ot1"/>-->
+                <af:link text="#{row.ConNo}" id="l1" action="editCon" inlineStyle="font-weight:bold;"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.BuId.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.BuId.label}" id="c2" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                    required="#{bindings.SgsContractHeaderVO1.hints.BuId.mandatory}"
+                                    shortDesc="#{bindings.SgsContractHeaderVO1.hints.BuId.tooltip}" readOnly="true"
+                                    id="soc1">
+                  <f:selectItems value="#{row.bindings.BuId.items}" id="si1"/>
+                  <f:validator binding="#{row.bindings.BuId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.CustomersId.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.CustomersId.label}" id="c3" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.CustomersId.inputValue}"
+                                    label="#{row.bindings.CustomersId.label}"
+                                    required="#{bindings.SgsContractHeaderVO1.hints.CustomersId.mandatory}"
+                                    shortDesc="#{bindings.SgsContractHeaderVO1.hints.CustomersId.tooltip}"
+                                    readOnly="true" id="soc2">
+                  <f:selectItems value="#{row.bindings.CustomersId.items}" id="si2"/>
+                  <f:validator binding="#{row.bindings.CustomersId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.BillTypeId.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.BillTypeId.label}" id="c4" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.BillTypeId.inputValue}"
+                                    label="#{row.bindings.BillTypeId.label}"
+                                    required="#{bindings.SgsContractHeaderVO1.hints.BillTypeId.mandatory}"
+                                    shortDesc="#{bindings.SgsContractHeaderVO1.hints.BillTypeId.tooltip}"
+                                    readOnly="true" id="soc3">
+                  <f:selectItems value="#{row.bindings.BillTypeId.items}" id="si3"/>
+                  <f:validator binding="#{row.bindings.BillTypeId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.CreatedDate.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.CreatedDate.label}" id="c5" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <f:facet name="filter">
+                  <af:inputDate value="#{bindings.SgsContractHeaderVOCriteriaQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                id="id1">
+                    <af:convertDateTime pattern="#{bindings.SgsContractHeaderVO1.hints.CreatedDate.format}"/>
+                  </af:inputDate>
+                </f:facet>
+                <af:outputText value="#{row.CreatedDate}"
+                               shortDesc="#{bindings.SgsContractHeaderVO1.hints.CreatedDate.tooltip}" id="ot2">
+                  <af:convertDateTime pattern="#{bindings.SgsContractHeaderVO1.hints.CreatedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderVO1.hints.CreatedBy.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderVO1.hints.CreatedBy.label}" id="c6" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <af:outputText value="#{row.CreatedBy}"
+                               shortDesc="#{bindings.SgsContractHeaderVO1.hints.CreatedBy.tooltip}" id="ot3"/>
+              </af:column>
+            </af:table>
+            <f:facet name="statusbar"/>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="Contract Lines" id="pb2">
+          <f:facet name="toolbar"/>
+          <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t3">
+                <af:button id="b5" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsContractHeaderToLinesVO.estimatedRowCount &lt;= 0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="t4" filename="ContractLines.xls"/>
+                </af:button>
+                <af:button actionListener="#{bindings.CreateInsert1.execute}"
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonContract;action=Update']) ? true : (bindings.SgsContractHeaderVO1.estimatedRowCount &lt;=0)}" id="b3" icon="/resources/icons/plus.png"
+                           action="createConLine" partialTriggers="::qryId1"/>
+                <af:button
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonContract;action=Update']) ? true : (!bindings.Delete1.enabled)}" id="b4" icon="/resources/icons/delete.png"
+                           action="#{pageFlowScope.ContractsBean.deleteContractLineButton}"/>
+              </af:toolbar>
+            </f:facet>
+            <af:table value="#{bindings.SgsContractHeaderToLinesVO.collectionModel}" var="row"
+                      rows="#{bindings.SgsContractHeaderToLinesVO.rangeSize}"
+                      emptyText="#{bindings.SgsContractHeaderToLinesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SgsContractHeaderToLinesVO.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SgsContractHeaderToLinesVO.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.SgsContractHeaderToLinesVO.rangeSize}"
+                      filterModel="#{bindings.SgsContractHeaderToLinesVOQuery.queryDescriptor}" 
+                      queryListener="#{bindings.SgsContractHeaderToLinesVOQuery.processQuery}" varStatus="vs" id="t4"
+                       styleClass="AFStretchWidth" partialTriggers="::b3 ::b4">
+              <af:column sortProperty="#{bindings.SgsContractHeaderToLinesVO.hints.LineNo.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderToLinesVO.hints.LineNo.label}" id="c7" align="center"
+                         inlineStyle="text-align:left;" width="15%">
+                <!--<af:outputText value="#{row.LineNo}"
+                               shortDesc="#{bindings.SgsContractHeaderToLinesVO.hints.LineNo.tooltip}" id="ot1"/>-->
+                <af:link text="#{row.LineNo}" id="l2" action="editConLine" inlineStyle="font-weight:bold;"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderToLinesVO.hints.BuId.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderToLinesVO.hints.BuId.label}" id="c8" align="center"
+                         inlineStyle="text-align:left;" width="15%">
+                <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                    required="#{bindings.SgsContractHeaderToLinesVO.hints.BuId.mandatory}"
+                                    shortDesc="#{bindings.SgsContractHeaderToLinesVO.hints.BuId.tooltip}"
+                                    readOnly="true" id="soc4">
+                  <f:selectItems value="#{row.bindings.BuId.items}" id="si4"/>
+                  <f:validator binding="#{row.bindings.BuId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderToLinesVO.hints.ServicesId.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderToLinesVO.hints.ServicesId.label}" id="c9"
+                         align="center" inlineStyle="text-align:left;" width="15%">
+                <af:selectOneChoice value="#{row.bindings.ServicesId.inputValue}"
+                                    label="#{row.bindings.ServicesId.label}"
+                                    required="#{bindings.SgsContractHeaderToLinesVO.hints.ServicesId.mandatory}"
+                                    shortDesc="#{bindings.SgsContractHeaderToLinesVO.hints.ServicesId.tooltip}"
+                                    readOnly="true" id="soc5">
+                  <f:selectItems value="#{row.bindings.ServicesId.items}" id="si5"/>
+                  <f:validator binding="#{row.bindings.ServicesId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedDate.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedDate.label}" id="c10"
+                         align="center" inlineStyle="text-align:left;" width="15%">
+                <f:facet name="filter">
+                  <af:inputDate value="#{bindings.SgsContractHeaderToLinesVOQuery.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                id="id2">
+                    <af:convertDateTime pattern="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedDate.format}"/>
+                  </af:inputDate>
+                </f:facet>
+                <af:outputText value="#{row.CreatedDate}"
+                               shortDesc="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedDate.tooltip}" id="ot4">
+                  <af:convertDateTime pattern="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedBy.name}" filterable="true"
+                         headerText="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedBy.label}" id="c11"
+                         align="center" inlineStyle="text-align:left;" width="15%">
+                <af:outputText value="#{row.CreatedBy}"
+                               shortDesc="#{bindings.SgsContractHeaderToLinesVO.hints.CreatedBy.tooltip}" id="ot5"/>
+              </af:column>
+            </af:table>
+            <f:facet name="statusbar"/>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

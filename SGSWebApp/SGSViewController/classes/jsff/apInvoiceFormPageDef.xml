@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="apInvoiceFormPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsAccPayInvoicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsAccPayInvoicesVO1Iterator"/>
+    </executables>
+    <bindings>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_SuppliersId" id="SuppliersId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_ServicesId" id="ServicesId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsAccPayInvoicesVO1Iterator" id="ApInvoiceNo">
+            <AttrNames>
+                <Item Value="ApInvoiceNo"/>
+            </AttrNames>
+        </attributeValues>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action IterBinding="SgsAccPayInvoicesVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_Status" id="Status"
+              DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    </bindings>
+</pageDefinition>

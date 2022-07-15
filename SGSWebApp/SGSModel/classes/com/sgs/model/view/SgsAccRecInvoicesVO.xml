@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SgsAccRecInvoicesVO"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  AccessMode="DEFAULT"
+  SelectList="SgsAccRecInvoices.ACC_REC_INVOICES_ID, 
+       SgsAccRecInvoices.BU_ID, 
+       SgsAccRecInvoices.CUSTOMERS_ID, 
+       SgsAccRecInvoices.PROJECTS_ID, 
+       SgsAccRecInvoices.BILL_TYPE_ID, 
+       SgsAccRecInvoices.SERVICES_ID, 
+       SgsAccRecInvoices.AR_INVOICE_NO, 
+       SgsAccRecInvoices.STATUS, 
+       SgsAccRecInvoices.CREATED_DATE, 
+       SgsAccRecInvoices.CREATED_BY, 
+       SgsAccRecInvoices.UPDATED_DATE, 
+       SgsAccRecInvoices.UPDATED_BY"
+  FromList="SGS_ACC_REC_INVOICES SgsAccRecInvoices"
+  Where="SgsAccRecInvoices.BU_ID = COALESCE(?,SgsAccRecInvoices.BU_ID)">
+  <Variable
+    Name="pARInvNo"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pBuId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <Variable
+    Name="pUsersBuId"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <TransientExpression
+      Name="VariableScript"
+      CodeSourceName="SgsAccRecInvoicesVO"/>
+  </Variable>
+  <Variable
+    Name="pStatus"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsBusinessUnitsVO1"
+    ViewObjectName="com.sgs.model.view.SgsBusinessUnitsVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsBusinessUnitsVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsCustomersVO1"
+    ViewObjectName="com.sgs.model.view.SgsCustomersVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsCustomersVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsBillTypeVO1"
+    ViewObjectName="com.sgs.model.view.SgsBillTypeVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsBillTypeVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsServicesVO1"
+    ViewObjectName="com.sgs.model.view.SgsServicesVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsServicesVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsProjectsVO1"
+    ViewObjectName="com.sgs.model.view.SgsProjectsVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsProjectsVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SgsListVO1"
+    ViewObjectName="com.sgs.model.view.SgsListVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SgsListVOCriteria"
+      FullName="com.sgs.model.view.SgsListVO.SgsListVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="pName">
+        <TransientExpression
+          Name="ExpressionScript"
+          trustMode="untrusted"
+          CodeSourceName="SgsAccRecInvoicesVO"/>
+      </PIMap>
+      <PIMap Variable="pType">
+        <TransientExpression
+          Name="ExpressionScript"
+          trustMode="untrusted"
+          CodeSourceName="SgsAccRecInvoicesVO"/>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_BuId"
+    ListVOName="SGSAppModule_SgsBusinessUnitsVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomersId"
+    ListVOName="SGSAppModule_SgsCustomersVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomersId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustomersId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BillTypeId"
+    ListVOName="SGSAppModule_SgsBillTypeVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BillTypeId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BillTypeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BillTypeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ServicesId"
+    ListVOName="SGSAppModule_SgsServicesVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ServicesId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ServicesId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ServiceName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ProjectsId"
+    ListVOName="SGSAppModule_SgsProjectsVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProjectsId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ProjectsId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProjectName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Status"
+    ListVOName="SgsListVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Discription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SgsAccRecInvoices"
+    Entity="com.sgs.model.entity.SgsAccRecInvoices"/>
+  <ViewAttribute
+    Name="AccRecInvoicesId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AccRecInvoicesId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="ACC_REC_INVOICES_ID"/>
+  <ViewAttribute
+    Name="BuId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BuId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="BU_ID"
+    LOVName="LOV_BuId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.BuId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomersId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustomersId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="CUSTOMERS_ID"
+    LOVName="LOV_CustomersId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.CustomersId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProjectsId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProjectsId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="PROJECTS_ID"
+    LOVName="LOV_ProjectsId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.ProjectsId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BillTypeId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="BILL_TYPE_ID"
+    LOVName="LOV_BillTypeId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.BillTypeId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ServicesId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ServicesId"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="SERVICES_ID"
+    LOVName="LOV_ServicesId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.ServicesId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ArInvoiceNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ArInvoiceNo"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="AR_INVOICE_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.ArInvoiceNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="STATUS"
+    LOVName="LOV_Status">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="CREATED_DATE"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.CreatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="CREATED_BY"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsAccRecInvoicesVO.CreatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedDate"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="UPDATED_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="SgsAccRecInvoices"
+    AliasName="UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewCriteria
+    Name="SgsAccRecInvoicesVOCriteria"
+    ViewObjectName="com.sgs.model.view.SgsAccRecInvoicesVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SgsAccRecInvoicesVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BuId"
+        ViewAttribute="BuId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pBuId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ArInvoiceNo"
+        ViewAttribute="ArInvoiceNo"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pARInvNo"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Value=":pStatus"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SgsAccRecPaymentsVO"
+    ViewLink="com.sgs.model.viewLink.SgsARInvoicesToARPaymentVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SgsArInvoiceLinesVO"
+    ViewLink="com.sgs.model.viewLink.SgsArInvoiceArLinesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SgsArReceiptDtlVO"
+    ViewLink="com.sgs.model.viewLink.SgsArInvReceiptVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.sgs.model.SGSModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

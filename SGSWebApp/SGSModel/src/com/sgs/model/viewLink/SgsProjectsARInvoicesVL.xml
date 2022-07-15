@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SgsProjectsARInvoicesVL"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.sgs.model.viewLink.SgsProjectsARInvoicesVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SgsProjectsVO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.sgs.model.view.SgsProjectsVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="SgsProjectsVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sgs.model.view.SgsProjectsVO.ProjectsId"/>
+      <Item Value="com.sgs.model.view.SgsProjectsVO.BuId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SgsAccRecInvoicesVO"
+    Cardinality="-1"
+    Owner="com.sgs.model.view.SgsAccRecInvoicesVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_accessor" Value="false"/>
+      <Attr Name="_finderName" Value="SgsAccRecInvoicesVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.sgs.model.view.SgsAccRecInvoicesVO.ProjectsId"/>
+      <Item Value="com.sgs.model.view.SgsAccRecInvoicesVO.BuId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.sgs.model.SGSModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

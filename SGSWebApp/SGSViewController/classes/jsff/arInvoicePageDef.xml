@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="arInvoicePageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsAccRecInvoicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsAccRecInvoicesVO1Iterator"/>
+        <searchRegion Binds="SgsAccRecInvoicesVO1Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsAccRecInvoicesVO1Query"/>
+        <iterator Binds="SgsArInvoiceLinesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsArInvoiceLinesVO1Iterator"/>
+        <searchRegion Binds="SgsArInvoiceLinesVO1Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsArInvoiceLinesVO1Query"/>
+        <iterator Binds="SgsARInvoicetoARPaymentsVO" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsARInvoicetoARPaymentsVOIterator"/>
+        <searchRegion Criteria="SgsAccRecInvoicesVOCriteria"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsAccRecInvoicesVO1Iterator" id="SgsAccRecInvoicesVOCriteriaQuery"/>
+        <iterator Binds="SgsArReceiptDtlVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsArReceiptDtlVO1Iterator"/>
+        <searchRegion Binds="SgsArReceiptDtlVO1Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsArReceiptDtlVO1Query"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsAccRecInvoicesVO1Iterator" id="SgsAccRecInvoicesVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsAccRecInvoicesVO" Name="SgsAccRecInvoicesVO10">
+                <AttrNames>
+                    <Item Value="BuId"/>
+                    <Item Value="CustomersId"/>
+                    <Item Value="ProjectsId"/>
+                    <Item Value="BillTypeId"/>
+                    <Item Value="ServicesId"/>
+                    <Item Value="ArInvoiceNo"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="Status"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsAccRecInvoicesVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsAccRecInvoicesVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="SgsArInvoiceLinesVO1Iterator" id="SgsArInvoiceLinesVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsArInvoiceLinesVO" Name="SgsArInvoiceLinesVO10">
+                <AttrNames>
+                    <Item Value="ArInvoiceLinesNo"/>
+                    <Item Value="BuId"/>
+                    <Item Value="ArInvoiceNo"/>
+                    <Item Value="TotalAmount"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="RemainingPayments"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsArInvoiceLinesVO1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsArInvoiceLinesVO1Iterator" id="Delete1" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="SgsARInvoicetoARPaymentsVOIterator" id="SgsARInvoicetoARPaymentsVO">
+            <nodeDefinition DefName="com.sgs.model.view.SgsAccRecPaymentsVO" Name="SgsARInvoicetoARPaymentsVO0">
+                <AttrNames>
+                    <Item Value="AccRecPaymentsId"/>
+                    <Item Value="BuId"/>
+                    <Item Value="ArInvoiceNum"/>
+                    <Item Value="TotalAmount"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="RemainingPayments"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="SgsArReceiptDtlVO1Iterator" id="SgsArReceiptDtlVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsArReceiptDtlVO" Name="SgsArReceiptDtlVO10">
+                <AttrNames>
+                    <Item Value="ReceiptDtlId"/>
+                    <Item Value="AccRecInvoicesId"/>
+                    <Item Value="ArReceiptId"/>
+                    <Item Value="BuId"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <attributeValues IterBinding="SgsAccRecInvoicesVO1Iterator" id="Status">
+            <AttrNames>
+                <Item Value="Status"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="SgsAccRecInvoicesVO1Iterator" id="SgsAccRecInvoicesVO11">
+            <nodeDefinition DefName="com.sgs.model.view.SgsAccRecInvoicesVO" Name="SgsAccRecInvoicesVO110">
+                <AttrNames>
+                    <Item Value="Status"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
+</pageDefinition>

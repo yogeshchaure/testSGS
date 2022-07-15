@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">standardRateSetupForm</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">291.70117</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>standardRateSetupForm&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">380.09766</property>
+      <property
+         name="page">/jsff/standardRateSetupForm.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowReturn
+      id="TaskFlowReturn3">
+      <property
+         name="activityId">backtoSRRate</property>
+      <property
+         name="x">581.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>backtoSRRate&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  backtoSRRate&lt;/p></property>
+      <property
+         name="y">348.89648</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="TaskFlowReturn3">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">R50,332.70117,379.74707,540.0,348.5459,L50</property>
+   </ControlFlowCase>
+</SDM>

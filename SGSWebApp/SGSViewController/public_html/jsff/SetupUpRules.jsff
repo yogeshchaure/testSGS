@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1" topHeight="87px">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelDashboard id="pd1" rowHeight="650px" columns="1">
+                <af:panelGroupLayout id="pgl5" layout="scroll" halign="center" valign="middle">
+                    <af:decorativeBox id="db1" topHeight="1px" inlineStyle="margin-left:3px;margin-right:3px;"
+                                      styleClass="decorativeBoxNoframeBorder">
+                        <f:facet name="top"/>
+                        <f:facet name="center">
+                            <af:panelSpringboard id="ps1" displayMode="grid"
+                                                 inlineStyle="background-color:white; min-height:100%;">
+                                <af:showDetailItem text="Cost Identification Rule" id="sdi6"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/Receivables.png">
+                                    <af:region value="#{bindings.costIdentificationRuleBTF1.regionModel}" id="r1"/>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="sdi7" text="Business Unit Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/BU_logo.png">
+                                    <af:region value="#{bindings.businessUnitMasterBTF1.regionModel}" id="r2"/>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="sdi1" text="Allocation Rule Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/Allocation Rule.png">
+                                    <af:region value="#{bindings.allocationRuleSetupBTF1.regionModel}" id="r3"/>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="sdi2" text="Standard Rate Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/Standard_rate.png">
+                                    <af:region value="#{bindings.standardRateSetupBTF1.regionModel}" id="r4"/>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="sdi5" text="Transfer Pricing Agreement Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/markup_rate.png">
+                                    <af:region value="#{bindings.TPASetupBTF1.regionModel}" id="r5"/>
+                                </af:showDetailItem>
+                                <af:showDetailItem id="sdi4" text="Mark-Up Rate Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;"
+                                                   icon="/resources/icons/transafer_pricing.png"></af:showDetailItem>
+                                <af:showDetailItem id="sdi3" text="GST Setup"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/TaxLogo.png"></af:showDetailItem>
+                                <af:showDetailItem id="sdi8" text="Value Added Tax (VAT) Set-Up"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/VATTAX.png"></af:showDetailItem>
+                                <af:showDetailItem id="sdi9" text="Withholding Tax (WHT) / TDS Set-Up"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/WHTtax.png"></af:showDetailItem>
+                                <af:showDetailItem id="sdi10" text="Global Settings Set-Up"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/globalSetting.png"></af:showDetailItem>
+                                <af:showDetailItem id="sdi11" text="User Access Masters"
+                                                   rendered="#{securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=View']}"
+                                                   inlineStyle="min-height:500px;" icon="/resources/icons/useraccess.png"></af:showDetailItem>
+                            </af:panelSpringboard>
+                        </f:facet>
+                    </af:decorativeBox>
+                </af:panelGroupLayout>
+            </af:panelDashboard>
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

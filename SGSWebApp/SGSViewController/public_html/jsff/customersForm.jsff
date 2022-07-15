@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Customers" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:button id="b1" action="save"
+                       actionListener="#{bindings.Commit.execute}"
+                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonCust;action=Update'])}"
+                       text="Save and Close" accessKey="S"/>
+            <af:button id="b2" action="cancel" immediate="true"
+                       actionListener="#{bindings.Rollback.execute}" rendered="#{pageFlowScope.pAddEdit == 'EDIT'}"
+                       text="Cancel" accessKey="C"/>
+            <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                       id="b3"
+                       rendered="#{pageFlowScope.pAddEdit == 'ADD'}" action="cancel" immediate="true" text="Cancel"
+                       accessKey="C"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="3">
+          <af:selectOneChoice value="#{bindings.BuId.inputValue}" label="#{bindings.BuId.label}"
+                              required="#{bindings.BuId.hints.mandatory}" shortDesc="#{bindings.BuId.hints.tooltip}"
+                              id="soc1"  >
+            <f:selectItems value="#{bindings.BuId.items}" id="si1"/>
+            <f:validator binding="#{bindings.BuId.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.CustCode.inputValue}" label="#{bindings.CustCode.hints.label}"
+                        required="#{bindings.CustCode.hints.mandatory}"
+                        columns="#{bindings.CustCode.hints.displayWidth}"
+                        maximumLength="#{bindings.CustCode.hints.precision}"
+                        shortDesc="#{bindings.CustCode.hints.tooltip}" id="it1" 
+                        >
+            <f:validator binding="#{bindings.CustCode.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CustName.inputValue}" label="#{bindings.CustName.hints.label}"
+                        required="#{bindings.CustName.hints.mandatory}"
+                        columns="#{bindings.CustName.hints.displayWidth}"
+                        maximumLength="#{bindings.CustName.hints.precision}"
+                        shortDesc="#{bindings.CustName.hints.tooltip}" id="it2" 
+                        >
+            <f:validator binding="#{bindings.CustName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CustConN0.inputValue}" label="#{bindings.CustConN0.hints.label}"
+                        required="#{bindings.CustConN0.hints.mandatory}"
+                        columns="#{bindings.CustConN0.hints.displayWidth}"
+                        maximumLength="#{bindings.CustConN0.hints.precision}"
+                        shortDesc="#{bindings.CustConN0.hints.tooltip}" id="it3" 
+                        >
+            <f:validator binding="#{bindings.CustConN0.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.CustAddress.inputValue}" label="#{bindings.CustAddress.hints.label}"
+                        required="#{bindings.CustAddress.hints.mandatory}"
+                        columns="#{bindings.CustAddress.hints.displayWidth}"
+                        maximumLength="#{bindings.CustAddress.hints.precision}"
+                        shortDesc="#{bindings.CustAddress.hints.tooltip}" id="it4" 
+                        >
+            <f:validator binding="#{bindings.CustAddress.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

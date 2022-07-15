@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="allocationRuleSetupBTF">
+    <default-activity>allocationRuleSetup</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name>AllocationRuleSetupBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.AllocationRuleSetupBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="allocationRuleSetup">
+      <page>/jsff/allocationRuleSetup.jsff</page>
+    </view>
+    <task-flow-call id="allocationRuleSetupFormADD">
+      <task-flow-reference>
+        <document>/bTaskFlow/allocationRuleSetupFormBTF.xml</document>
+        <id>allocationRuleSetupFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>pAllocRuleSetAddEdit</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="allocationRuleSetupFormEDIT">
+      <task-flow-reference>
+        <document>/bTaskFlow/allocationRuleSetupFormBTF.xml</document>
+        <id>allocationRuleSetupFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>pAllocRuleSetAddEdit</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>allocationRuleSetup</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ADD</from-outcome>
+        <to-activity-id>allocationRuleSetupFormADD</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>EDIT</from-outcome>
+        <to-activity-id>allocationRuleSetupFormEDIT</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

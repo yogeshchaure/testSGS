@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="businessUnitBTF">
+    <default-activity>businessUnit</default-activity>
+    <transaction>
+      <requires-transaction/>
+    </transaction>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name>BusinessUnitBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.BusinessUnitBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="businessUnit">
+      <page>/jsff/businessUnit.jsff</page>
+    </view>
+    <task-flow-call id="businessUnitAdd">
+      <task-flow-reference>
+        <document>/bTaskFlow/businessUnitFormBTF.xml</document>
+        <id>businessUnitFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>callType</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="businessUnitEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/businessUnitFormBTF.xml</document>
+        <id>businessUnitFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>callType</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>businessUnit</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>buFormAdd</from-outcome>
+        <to-activity-id>businessUnitAdd</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>buFormEdit</from-outcome>
+        <to-activity-id>businessUnitEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

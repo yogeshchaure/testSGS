@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Business Units" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:button id="b1"
+                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonBU;action=Update'])}"
+                       text="Save and Close" accessKey="S" action="#{pageFlowScope.businessUnitBean.submitBUAction}"/>
+            <af:button id="b2" action="cancel" immediate="true"
+                       rendered="#{pageFlowScope.callType  !=  'ADD'}" actionListener="#{bindings.Rollback.execute}"
+                       text="Cancel" accessKey="C"/>
+            <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                       id="b3"
+                       rendered="#{pageFlowScope.callType  !=  'EDIT'}" immediate="true" action="cancel" text="Cancel"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="1">
+          <af:inputText value="#{bindings.BuName.inputValue}" label="Business Unit Name"
+                        required="#{bindings.BuName.hints.mandatory}" columns="#{bindings.BuName.hints.displayWidth}"
+                        maximumLength="#{bindings.BuName.hints.precision}" shortDesc="#{bindings.BuName.hints.tooltip}"
+                        id="it1" >
+            <f:validator binding="#{bindings.BuName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BuDesc.inputValue}" label="Business Unit Description"
+                        required="#{bindings.BuDesc.hints.mandatory}" columns="#{bindings.BuDesc.hints.displayWidth}"
+                        maximumLength="#{bindings.BuDesc.hints.precision}" shortDesc="#{bindings.BuDesc.hints.tooltip}"
+                        id="it2" >
+            <f:validator binding="#{bindings.BuDesc.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

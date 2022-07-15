@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="arReceiptMainPageDef"
+                Package="jsff" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsArReceiptVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsArReceiptVO1Iterator"/>
+    <searchRegion Criteria="SgsArReceiptVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsArReceiptVO1Iterator" id="SgsArReceiptVOCriteriaQuery"/>
+    <iterator Binds="SgsArReceiptDtlVO2" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsArReceiptDtlVO2Iterator"/>
+    <searchRegion Binds="SgsArReceiptDtlVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsArReceiptDtlVO2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsArReceiptVO1Iterator" id="SgsArReceiptVO1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsArReceiptVO" Name="SgsArReceiptVO10">
+        <AttrNames>
+          <Item Value="ArReceiptId"/>
+          <Item Value="BuId"/>
+          <Item Value="Amount"/>
+          <Item Value="BankNumber"/>
+          <Item Value="NeftNumber"/>
+          <Item Value="CheckNumber"/>
+          <Item Value="PaymentDate"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SgsArReceiptDtlVO2Iterator" id="SgsArReceiptDtlVO2">
+      <nodeDefinition DefName="com.sgs.model.view.SgsArReceiptDtlVO" Name="SgsArReceiptDtlVO20">
+        <AttrNames>
+          <Item Value="ReceiptDtlId"/>
+          <Item Value="ArReceiptId"/>
+          <Item Value="AccRecInvoicesId"/>
+          <Item Value="BuId"/>
+          <Item Value="AmountPaid"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SgsArReceiptVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SgsArReceiptVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SgsArReceiptDtlVO2Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SgsArReceiptDtlVO2Iterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

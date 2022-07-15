@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="SetupUpRulesPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="costIdentificationRuleBTF1"
+              taskFlowId="/bTaskFlow/costIdentificationRuleBTF.xml#costIdentificationRuleBTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="businessUnitMasterBTF1" taskFlowId="/bTaskFlow/businessUnitMasterBTF.xml#businessUnitMasterBTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="allocationRuleSetupBTF1" taskFlowId="/bTaskFlow/allocationRuleSetupBTF.xml#allocationRuleSetupBTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="standardRateSetupBTF1" taskFlowId="/bTaskFlow/standardRateSetupBTF.xml#standardRateSetupBTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="TPASetupBTF1" taskFlowId="/bTaskFlow/TPASetupBTF.xml#TPASetupBTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

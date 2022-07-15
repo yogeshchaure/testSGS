@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SgsContractHeaderVO"
+  Version="12.2.1.22.48"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  AccessMode="DEFAULT"
+  SelectList="SgsContractHeader.CONTRACT_HEADER_ID, 
+       SgsContractHeader.BU_ID, 
+       SgsContractHeader.CON_NO, 
+       SgsContractHeader.CUSTOMERS_ID, 
+       SgsContractHeader.BILL_TYPE_ID, 
+       SgsContractHeader.CREATED_DATE, 
+       SgsContractHeader.CREATED_BY, 
+       SgsContractHeader.UPDATED_DATE, 
+       SgsContractHeader.UPDATED_BY"
+  FromList="SGS_CONTRACT_HEADER SgsContractHeader"
+  Where="SgsContractHeader.BU_ID = COALESCE(?,SgsContractHeader.BU_ID)">
+  <Variable
+    Name="pBuId"
+    Kind="viewcriteria"
+    Type="java.lang.Integer"/>
+  <Variable
+    Name="pContractNo"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pUsersBuId"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <TransientExpression
+      Name="VariableScript"
+      trustMode="trusted"
+      CodeSourceName="SgsContractHeaderVO"/>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <ViewAccessor
+    Name="SGSAppModule_SgsBusinessUnitsVO1"
+    ViewObjectName="com.sgs.model.view.SgsBusinessUnitsVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsBusinessUnitsVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsCustomersVO1"
+    ViewObjectName="com.sgs.model.view.SgsCustomersVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsCustomersVO1"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SGSAppModule_SgsBillTypeVO1"
+    ViewObjectName="com.sgs.model.view.SgsBillTypeVO"
+    AMUsageName="SGSAppModule"
+    ViewInstanceName="SgsBillTypeVO1"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_BuId"
+    ListVOName="SGSAppModule_SgsBusinessUnitsVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BuId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BuId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BuDesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_CustomersId"
+    ListVOName="SGSAppModule_SgsCustomersVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustomersId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustomersId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BillTypeId"
+    ListVOName="SGSAppModule_SgsBillTypeVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BillTypeId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BillTypeId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BillTypeName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SgsContractHeader"
+    Entity="com.sgs.model.entity.SgsContractHeader"/>
+  <ViewAttribute
+    Name="ContractHeaderId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ContractHeaderId"
+    EntityUsage="SgsContractHeader"
+    AliasName="CONTRACT_HEADER_ID"/>
+  <ViewAttribute
+    Name="BuId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BuId"
+    EntityUsage="SgsContractHeader"
+    AliasName="BU_ID"
+    LOVName="LOV_BuId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.BuId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="120"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ConNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ConNo"
+    EntityUsage="SgsContractHeader"
+    AliasName="CON_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.ConNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustomersId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CustomersId"
+    EntityUsage="SgsContractHeader"
+    AliasName="CUSTOMERS_ID"
+    LOVName="LOV_CustomersId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.CustomersId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BillTypeId"
+    EntityUsage="SgsContractHeader"
+    AliasName="BILL_TYPE_ID"
+    LOVName="LOV_BillTypeId">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.BillTypeId_LABEL"/>
+        <CONTROLTYPE
+          Value="choice"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SgsContractHeader"
+    AliasName="CREATED_DATE"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.CreatedDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreatedBy"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="SgsContractHeader"
+    AliasName="CREATED_BY"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.sgs.model.view.SgsContractHeaderVO.CreatedBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="UpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedDate"
+    EntityUsage="SgsContractHeader"
+    AliasName="UPDATED_DATE"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="UpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="UpdatedBy"
+    EntityUsage="SgsContractHeader"
+    AliasName="UPDATED_BY"
+    IsUpdateable="false"/>
+  <ViewCriteria
+    Name="SgsContractHeaderVOCriteria"
+    ViewObjectName="com.sgs.model.view.SgsContractHeaderVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SgsContractHeaderVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="BuId"
+        ViewAttribute="BuId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pBuId"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ConNo"
+        ViewAttribute="ConNo"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pContractNo"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SgsContractHeaderToLines"
+    ViewLink="com.sgs.model.viewLink.SgsContractHeaderContractLinsVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.sgs.model.SGSModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

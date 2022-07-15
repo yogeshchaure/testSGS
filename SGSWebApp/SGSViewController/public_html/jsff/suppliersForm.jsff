@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Suppliers" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:button actionListener="#{bindings.Commit.execute}"
+                       id="b1" action="back"
+                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonSupplier;action=Update'])}"
+                       text="Save and Close" accessKey="S"/>
+            <af:button actionListener="#{bindings.Rollback.execute}" immediate="true" id="b2" action="back"
+                       rendered="#{pageFlowScope.pAddEdit == 'EDIT'}" text="Cancel" accessKey="C">
+              <af:resetActionListener/>
+            </af:button>
+            <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                       id="b3"
+                       rendered="#{pageFlowScope.pAddEdit == 'ADD'}" immediate="true" text="Cancel" accessKey="C"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" maxColumns="2" rows="3">
+          <af:selectOneChoice value="#{bindings.BuId.inputValue}" label="#{bindings.BuId.label}"
+                              required="#{bindings.BuId.hints.mandatory}" shortDesc="#{bindings.BuId.hints.tooltip}"
+                              id="soc1"  >
+            <f:selectItems value="#{bindings.BuId.items}" id="si1"/>
+            <f:validator binding="#{bindings.BuId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ServicesId.inputValue}" label="#{bindings.ServicesId.label}"
+                              required="#{bindings.ServicesId.hints.mandatory}"
+                              shortDesc="#{bindings.ServicesId.hints.tooltip}" id="soc2" 
+                              >
+            <f:selectItems value="#{bindings.ServicesId.items}" id="si2"/>
+            <f:validator binding="#{bindings.ServicesId.validator}"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.SupplierCode.inputValue}" label="#{bindings.SupplierCode.hints.label}"
+                        required="#{bindings.SupplierCode.hints.mandatory}"
+                        columns="#{bindings.SupplierCode.hints.displayWidth}"
+                        maximumLength="#{bindings.SupplierCode.hints.precision}"
+                        shortDesc="#{bindings.SupplierCode.hints.tooltip}" id="it1" 
+                        >
+            <f:validator binding="#{bindings.SupplierCode.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.SupplierName.inputValue}" label="#{bindings.SupplierName.hints.label}"
+                        required="#{bindings.SupplierName.hints.mandatory}"
+                        columns="#{bindings.SupplierName.hints.displayWidth}"
+                        maximumLength="#{bindings.SupplierName.hints.precision}"
+                        shortDesc="#{bindings.SupplierName.hints.tooltip}" id="it2" 
+                        >
+            <f:validator binding="#{bindings.SupplierName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.SupplierConN0.inputValue}" label="#{bindings.SupplierConN0.hints.label}"
+                        required="#{bindings.SupplierConN0.hints.mandatory}"
+                        columns="#{bindings.SupplierConN0.hints.displayWidth}"
+                        maximumLength="#{bindings.SupplierConN0.hints.precision}"
+                        shortDesc="#{bindings.SupplierConN0.hints.tooltip}" id="it3" 
+                        >
+            <f:validator binding="#{bindings.SupplierConN0.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.SupplierAddress.inputValue}" label="#{bindings.SupplierAddress.hints.label}"
+                        required="#{bindings.SupplierAddress.hints.mandatory}"
+                        columns="#{bindings.SupplierAddress.hints.displayWidth}"
+                        maximumLength="#{bindings.SupplierAddress.hints.precision}"
+                        shortDesc="#{bindings.SupplierAddress.hints.tooltip}" id="it4" 
+                        >
+            <f:validator binding="#{bindings.SupplierAddress.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

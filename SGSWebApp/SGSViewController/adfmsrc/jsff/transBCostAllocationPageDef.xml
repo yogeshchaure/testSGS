@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="transBCostAllocationPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsTransBCostAllocationView1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsTransBCostAllocationView1Iterator"/>
+    <searchRegion Criteria="SgsTransBCostAllocationVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsTransBCostAllocationView1Iterator" id="SgsTransBCostAllocationVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsTransBCostAllocationView1Iterator" id="SgsTransBCostAllocationView1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsTransBCostAllocationVO" Name="SgsTransBCostAllocationView10">
+        <AttrNames>
+          <Item Value="ExtractId"/>
+          <Item Value="TransactinPeriod"/>
+          <Item Value="BuId"/>
+          <Item Value="GlAccount"/>
+          <Item Value="JobCode"/>
+          <Item Value="SourceSystem"/>
+          <Item Value="SourceModule"/>
+          <Item Value="TransactionAmount"/>
+          <Item Value="ServiceCategory"/>
+          <Item Value="AccountTreatment"/>
+          <Item Value="ExtractedBy"/>
+          <Item Value="TrasactionStatus"/>
+          <Item Value="CirId"/>
+          <Item Value="TransactionCategory"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="SgsTransBCostAllocationView1Iterator" id="CreateInsert"
+            InstanceName="SGSAppModuleDataControl.SgsTransBCostAllocationView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SgsTransBCostAllocationView1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsTransBCostAllocationView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

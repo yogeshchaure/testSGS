@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="customersPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsCustomersVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsCustomersVO1Iterator"/>
+        <searchRegion Criteria="SgsCustomersVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsCustomersVO1Iterator" id="SgsCustomersVOCriteriaQuery"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsCustomersVO1Iterator" id="SgsCustomersVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsCustomersVO" Name="SgsCustomersVO10">
+                <AttrNames>
+                    <Item Value="BuId"/>
+                    <Item Value="CustCode"/>
+                    <Item Value="CustName"/>
+                    <Item Value="CustConN0"/>
+                    <Item Value="CustAddress"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsCustomersVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsCustomersVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+    </bindings>
+</pageDefinition>

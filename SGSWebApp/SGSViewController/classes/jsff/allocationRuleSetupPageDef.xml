@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="allocationRuleSetupPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsAllocationRuleSetupVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsAllocationRuleSetupVO1Iterator"/>
+    <searchRegion Criteria="SgsAllocationRuleSetupVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsAllocationRuleSetupVO1Iterator" id="SgsAllocationRuleSetupVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsAllocationRuleSetupVO1Iterator" id="SgsAllocationRuleSetupVO1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsAllocationRuleSetupVO" Name="SgsAllocationRuleSetupVO10">
+        <AttrNames>
+          <Item Value="AllocationRuleId"/>
+          <Item Value="CostIdentificationId"/>
+          <Item Value="AllocationBasis"/>
+          <Item Value="OffsetAccount"/>
+          <Item Value="TargetAccount"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="SgsAllocationRuleSetupVO1Iterator" id="CreateInsert"
+            InstanceName="SGSAppModuleDataControl.SgsAllocationRuleSetupVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SgsAllocationRuleSetupVO1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsAllocationRuleSetupVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

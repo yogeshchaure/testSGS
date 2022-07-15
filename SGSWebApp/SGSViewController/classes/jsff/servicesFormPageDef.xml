@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="servicesFormPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsServicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsServicesVO1Iterator"/>
+    </executables>
+    <bindings>
+        <action IterBinding="SgsServicesVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <list IterBinding="SgsServicesVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId" DTSupportsMRU="false"
+              SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsServicesVO1Iterator" id="ServiceName">
+            <AttrNames>
+                <Item Value="ServiceName"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsServicesVO1Iterator" id="ServiceType">
+            <AttrNames>
+                <Item Value="ServiceType"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
+</pageDefinition>

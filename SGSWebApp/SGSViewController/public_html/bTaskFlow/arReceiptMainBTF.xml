@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="arReceiptMainBTF">
+    <default-activity>arReceiptMain</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <view id="arReceiptMain">
+      <page>/jsff/arReceiptMain.jsff</page>
+    </view>
+    <task-flow-call id="receiptBTFCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/receiptBTF.xml</document>
+        <id>receiptBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__1">
+        <name>pARReceiptAddEdit</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="receiptBTFEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/receiptBTF.xml</document>
+        <id>receiptBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__2">
+        <name>pARReceiptAddEdit</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="arReceiptDtlCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/arReceiptDtlBTF.xml</document>
+        <id>arReceiptDtlBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>pAddEditRcptDtl</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="arReceiptDtlEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/arReceiptDtlBTF.xml</document>
+        <id>arReceiptDtlBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__7">
+        <name>pAddEditRcptDtl</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id>arReceiptMain</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>createReceipt</from-outcome>
+        <to-activity-id>receiptBTFCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>editReceipt</from-outcome>
+        <to-activity-id>receiptBTFEdit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>createRcptDtl</from-outcome>
+        <to-activity-id>arReceiptDtlCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>editRcptDtl</from-outcome>
+        <to-activity-id>arReceiptDtlEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

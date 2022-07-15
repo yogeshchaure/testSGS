@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="welcomeSGSPagePageDef"
+                Package="jsf">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <taskFlow id="contractsBTF1" taskFlowId="/bTaskFlow/contractsBTF.xml#contractsBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="arInvoiceBTF1" taskFlowId="/bTaskFlow/arInvoiceBTF.xml#arInvoiceBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="apInvoiceBTF1" taskFlowId="/bTaskFlow/apInvoiceBTF.xml#apInvoiceBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="projectsBTF1" taskFlowId="/bTaskFlow/projectsBTF.xml#projectsBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="suppliersBTF1" taskFlowId="/bTaskFlow/suppliersBTF.xml#suppliersBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="servicesBTF1" taskFlowId="/bTaskFlow/servicesBTF.xml#servicesBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="customersBTF1" taskFlowId="/bTaskFlow/customersBTF.xml#customersBTF" activation="deferred"
+                  xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+        <taskFlow id="businessUnitBTF1" taskFlowId="/bTaskFlow/businessUnitBTF.xml#businessUnitBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    </executables>
+    <bindings/>
+</pageDefinition>

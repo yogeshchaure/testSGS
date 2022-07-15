@@ -1,0 +1,47 @@
+//Groovy Scripts for com.sgs.model.view.SgsBusinessUnitMasterVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="LegalEntityList", name="pType")
+def pType_LegalEntityList_BindVariable_BoundParameter()
+{
+'LEGAL_ENTITY'
+}
+
+
+@AccessorParameterExpression(accessorName="GeographyList", name="pType")
+def pType_GeographyList_BindVariable_BoundParameter()
+{
+'GEO'
+}
+
+
+@AccessorParameterExpression(accessorName="ZoneList", name="pType")
+def pType_ZoneList_BindVariable_BoundParameter()
+{
+'ZONE'
+}
+
+
+@AccessorParameterExpression(accessorName="BuStatusList", name="pType")
+def pType_BuStatusList_BindVariable_BoundParameter()
+{
+'BU_STATUS'
+}
+
+
+@AccessorParameterExpression(accessorName="CurrencyList", name="pType")
+def pType_CurrencyList_BindVariable_BoundParameter()
+{
+'CURRENCY'
+}
+
+
+@AccessorParameterExpression(accessorName="YesNoList", name="pType")
+def pType_YesNoList_BindVariable_BoundParameter()
+{
+'YES_NO'
+}
+

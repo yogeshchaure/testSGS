@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">suppliersForm</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">140.00977</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>suppliersForm&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="y">208.0459</property>
+      <property
+         name="page">/jsff/suppliersForm.jsff</property>
+      <property
+         name="exceptionHandler">false</property>
+   </View>
+   <TaskFlowReturn
+      id="TaskFlowReturn4">
+      <property
+         name="activityId">backtoSuppliers</property>
+      <property
+         name="x">451.0</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>backtoSuppliers&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  backtoSuppliers&lt;/p></property>
+      <property
+         name="y">212.84473</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="exceptionHandler">false</property>
+   </TaskFlowReturn>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View2"
+      to="TaskFlowReturn4">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">R50,181.00977,207.69531,410.0,212.49414,L50</property>
+   </ControlFlowCase>
+</SDM>

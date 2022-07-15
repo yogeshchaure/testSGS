@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="Allocation Rule Setup" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout layout="vertical" id="pgl1">
+          <af:panelHeader text=" " id="ph1">
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SgsAllocationRuleSetupVOCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SgsAllocationRuleSetupVOCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SgsAllocationRuleSetupVOCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SgsAllocationRuleSetupVOCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1:resId1" saveQueryMode="hidden" rows="2" maxColumns="2"/>
+          </af:panelHeader>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+            <af:toolbar id="t2">
+             <af:button id="b7" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsAllocationRuleSetupVO1.estimatedRowCount &lt;= 0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="resId1" filename="AllocationRuleSetup.xls"/>
+                </af:button>
+                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.CreateInsert.enabled)}"
+                           id="b1" icon="/resources/icons/plus.png" action="ADD"/>
+                <af:button disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.Delete.enabled)}"
+                           id="b2" icon="/resources/icons/delete.png"
+                           action="#{pageFlowScope.AllocationRuleSetupBean.deleteAllocRuleSetup}"/>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SgsAllocationRuleSetupVO1.collectionModel}" var="row"
+                      rows="#{bindings.SgsAllocationRuleSetupVO1.rangeSize}"
+                      emptyText="#{bindings.SgsAllocationRuleSetupVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" fetchSize="#{bindings.SgsAllocationRuleSetupVO1.rangeSize}" id="resId1"
+                      styleClass="AFStretchWidth" columnStretching="column:resId1c1">
+              <af:column headerText="Allocation Rule ID" id="resId1c1">
+                <!--<af:outputText value="#{row.AllocationRuleId}"
+                               shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.AllocationRuleId.tooltip}"
+                               id="ot1"/>-->
+                <af:link text="#{row.AllocationRuleId}" id="l1" action="EDIT" inlineStyle="font-weight:bold;"/>
+              </af:column>
+              <af:column headerText="Cost Identification ID"
+                         id="resId1c2">
+                <af:selectOneChoice value="#{row.bindings.CostIdentificationId.inputValue}"
+                                    label="#{row.bindings.CostIdentificationId.label}"
+                                    required="#{bindings.SgsAllocationRuleSetupVO1.hints.CostIdentificationId.mandatory}"
+                                    shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.CostIdentificationId.tooltip}"
+                                    readOnly="true" id="soc1">
+                  <f:selectItems value="#{row.bindings.CostIdentificationId.items}" id="si1"/>
+                  <f:validator binding="#{row.bindings.CostIdentificationId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column headerText="Allocation Basis" id="resId1c3">
+                <af:selectOneChoice value="#{row.bindings.AllocationBasis.inputValue}"
+                                    label="#{row.bindings.AllocationBasis.label}"
+                                    required="#{bindings.SgsAllocationRuleSetupVO1.hints.AllocationBasis.mandatory}"
+                                    shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.AllocationBasis.tooltip}"
+                                    readOnly="true" id="soc2">
+                  <f:selectItems value="#{row.bindings.AllocationBasis.items}" id="si2"/>
+                  <f:validator binding="#{row.bindings.AllocationBasis.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column headerText="Offset Account" id="resId1c4">
+                <af:selectOneChoice value="#{row.bindings.OffsetAccount.inputValue}"
+                                    label="#{row.bindings.OffsetAccount.label}"
+                                    required="#{bindings.SgsAllocationRuleSetupVO1.hints.OffsetAccount.mandatory}"
+                                    shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.OffsetAccount.tooltip}"
+                                    readOnly="true" id="soc3">
+                  <f:selectItems value="#{row.bindings.OffsetAccount.items}" id="si3"/>
+                  <f:validator binding="#{row.bindings.OffsetAccount.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column headerText="Target Account" id="resId1c5">
+                <af:selectOneChoice value="#{row.bindings.TargetAccount.inputValue}"
+                                    label="#{row.bindings.TargetAccount.label}"
+                                    required="#{bindings.SgsAllocationRuleSetupVO1.hints.TargetAccount.mandatory}"
+                                    shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.TargetAccount.tooltip}"
+                                    readOnly="true" id="soc4">
+                  <f:selectItems value="#{row.bindings.TargetAccount.items}" id="si4"/>
+                  <f:validator binding="#{row.bindings.TargetAccount.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column headerText="Effective Start Date"
+                         id="resId1c6">
+                <af:outputText value="#{row.EffectiveStartDate}"
+                               shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.EffectiveStartDate.tooltip}"
+                               id="ot2">
+                  <af:convertDateTime pattern="#{bindings.SgsAllocationRuleSetupVO1.hints.EffectiveStartDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column headerText="Effective End Date" id="resId1c7">
+                <af:outputText value="#{row.EffectiveEndDate}"
+                               shortDesc="#{bindings.SgsAllocationRuleSetupVO1.hints.EffectiveEndDate.tooltip}"
+                               id="ot3">
+                  <af:convertDateTime pattern="#{bindings.SgsAllocationRuleSetupVO1.hints.EffectiveEndDate.format}"/>
+                </af:outputText>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

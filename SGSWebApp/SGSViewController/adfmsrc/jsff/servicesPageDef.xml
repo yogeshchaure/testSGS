@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="servicesPageDef" Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsServicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsServicesVO1Iterator"/>
+        <searchRegion Criteria="SgsServicesVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsServicesVO1Iterator" id="SgsServicesVOCriteriaQuery"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsServicesVO1Iterator" id="SgsServicesVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsServicesVO" Name="SgsServicesVO10">
+                <AttrNames>
+                    <Item Value="BuId"/>
+                    <Item Value="ServiceName"/>
+                    <Item Value="ServiceType"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsServicesVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsServicesVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    </bindings>
+</pageDefinition>

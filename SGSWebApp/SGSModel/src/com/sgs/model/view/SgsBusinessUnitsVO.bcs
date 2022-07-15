@@ -1,0 +1,12 @@
+//Groovy Scripts for com.sgs.model.view.SgsBusinessUnitsVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.VariableExpression;
+
+@VariableExpression(path="pBuId")
+def pBuId_VariableScript_Variable()
+{
+adf.context.sessionScope.usersBuId
+}
+

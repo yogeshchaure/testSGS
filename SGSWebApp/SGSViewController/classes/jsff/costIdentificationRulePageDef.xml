@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="costIdentificationRulePageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsCostIdentificationRuleView1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsCostIdentificationRuleView1Iterator"/>
+    <searchRegion Criteria="SgsCostIdentificationRuleVOCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsCostIdentificationRuleView1Iterator" id="SgsCostIdentificationRuleVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsCostIdentificationRuleView1Iterator" id="SgsCostIdentificationRuleView1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsCostIdentificationRuleVO" Name="SgsCostIdentificationRuleView10">
+        <AttrNames>
+          <Item Value="CirId"/>
+          <Item Value="RuleId"/>
+          <Item Value="GlId"/>
+          <Item Value="GlCode"/>
+          <Item Value="JobCode"/>
+          <Item Value="AccountTratment"/>
+          <Item Value="ServiceCategory"/>
+          <Item Value="EffectiveFrom"/>
+          <Item Value="EffectiveTo"/>
+          <Item Value="CreatedDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="UpdatedDate"/>
+          <Item Value="UpdatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SgsCostIdentificationRuleView1Iterator" id="CreateInsert"
+            InstanceName="SGSAppModuleDataControl.SgsCostIdentificationRuleView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SgsCostIdentificationRuleView1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsCostIdentificationRuleView1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>

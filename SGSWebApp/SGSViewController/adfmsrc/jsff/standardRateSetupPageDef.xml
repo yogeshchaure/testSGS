@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="standardRateSetupPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsStandarardRateVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsStandarardRateVO1Iterator"/>
+    <searchRegion Criteria="SgsStandarardRateVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SgsStandarardRateVO1Iterator" id="SgsStandarardRateVOCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SgsStandarardRateVO1Iterator" id="SgsStandarardRateVO1">
+      <nodeDefinition DefName="com.sgs.model.view.SgsStandarardRateVO" Name="SgsStandarardRateVO10">
+        <AttrNames>
+          <Item Value="ExpenseType"/>
+          <Item Value="SubExpenseType"/>
+          <Item Value="GlAccount"/>
+          <Item Value="SrGeography"/>
+          <Item Value="EmployeeGradeLevel"/>
+          <Item Value="StandardCost"/>
+          <Item Value="EffectiveStartDate"/>
+          <Item Value="EffectiveEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="SgsStandarardRateVO1Iterator" id="CreateInsert"
+            InstanceName="SGSAppModuleDataControl.SgsStandarardRateVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SgsStandarardRateVO1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsStandarardRateVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

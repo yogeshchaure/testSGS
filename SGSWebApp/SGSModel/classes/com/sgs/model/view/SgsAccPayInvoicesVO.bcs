@@ -1,0 +1,27 @@
+//Groovy Scripts for com.sgs.model.view.SgsAccPayInvoicesVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.VariableExpression;
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@VariableExpression(path="pUsersBuId")
+def pUsersBuId_VariableScript_Variable()
+{
+adf.context.sessionScope.usersBuId
+}
+
+
+@AccessorParameterExpression(accessorName="SgsListVO1", name="pName")
+def pName_SgsListVO1_BindVariable_BoundParameter()
+{
+Status
+}
+
+
+@AccessorParameterExpression(accessorName="SgsListVO1", name="pType")
+def pType_SgsListVO1_BindVariable_BoundParameter()
+{
+'INVSTATUS'
+}
+

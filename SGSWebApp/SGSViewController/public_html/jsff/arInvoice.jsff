@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical" partialTriggers="qryId1">
+        <af:panelBox text="Receivable Invoices" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelGroupLayout layout="vertical" id="pgl2">
+            <af:panelHeader text=" " id="ph1">
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.SgsAccRecInvoicesVOCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.SgsAccRecInvoicesVOCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.SgsAccRecInvoicesVOCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.SgsAccRecInvoicesVOCriteriaQuery.processQueryOperation}"
+                        saveQueryMode="hidden"/>
+            </af:panelHeader>
+          </af:panelGroupLayout>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:button id="b7" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsArInvoiceLinesVO1.estimatedRowCount &lt;=0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="t1" filename="ARinvoices.xls"/>
+                </af:button>
+                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=Update']) ? true : (!bindings.CreateInsert.enabled)}" id="b1" icon="/resources/icons/plus.png"
+                           action="arInvCreate"/>
+                <af:button
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=Update']) ?  true : (!bindings.Delete.enabled)}" id="b2" icon="/resources/icons/delete.png"
+                           action="#{pageFlowScope.ReceivablesBean.deleteARInvbutton}"/>
+              </af:toolbar>
+            </f:facet>
+            <af:table value="#{bindings.SgsAccRecInvoicesVO1.collectionModel}" var="row"
+                      rows="#{bindings.SgsAccRecInvoicesVO1.rangeSize}"
+                      emptyText="#{bindings.SgsAccRecInvoicesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SgsAccRecInvoicesVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SgsAccRecInvoicesVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.SgsAccRecInvoicesVO1.rangeSize}"
+                      filterModel="#{bindings.SgsAccRecInvoicesVO1Query.queryDescriptor}" 
+                      queryListener="#{bindings.SgsAccRecInvoicesVO1Query.processQuery}" varStatus="vs" id="t1"
+                      styleClass="AFStretchWidth" partialTriggers="::b1 ::b2" >
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.ArInvoiceNo.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.ArInvoiceNo.label}" id="c6" width="10%"
+                         align="left" inlineStyle="text-align:left;">
+                <!--<af:outputText value="#{row.ArInvoiceNo}"
+                               shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.ArInvoiceNo.tooltip}" id="ot1"/>-->
+                <af:link text="#{row.ArInvoiceNo}" id="l1" action="arInvEdit" inlineStyle="font-weight:bold;"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.BuId.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.BuId.label}" id="c1" width="10%"
+                         align="left" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.BuId.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.BuId.tooltip}" readOnly="true"
+                                    id="soc1">
+                  <f:selectItems value="#{row.bindings.BuId.items}" id="si1"/>
+                  <f:validator binding="#{row.bindings.BuId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.CustomersId.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.CustomersId.label}" id="c2" width="10%"
+                         align="left" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.CustomersId.inputValue}"
+                                    label="#{row.bindings.CustomersId.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.CustomersId.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.CustomersId.tooltip}"
+                                    readOnly="true" id="soc2">
+                  <f:selectItems value="#{row.bindings.CustomersId.items}" id="si2"/>
+                  <f:validator binding="#{row.bindings.CustomersId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.ProjectsId.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.ProjectsId.label}" id="c3" width="10%"
+                         align="center" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.ProjectsId.inputValue}"
+                                    label="#{row.bindings.ProjectsId.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.ProjectsId.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.ProjectsId.tooltip}"
+                                    readOnly="true" id="soc3">
+                  <f:selectItems value="#{row.bindings.ProjectsId.items}" id="si3"/>
+                  <f:validator binding="#{row.bindings.ProjectsId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.BillTypeId.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.BillTypeId.label}" id="c4" width="10%"
+                         align="left" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.BillTypeId.inputValue}"
+                                    label="#{row.bindings.BillTypeId.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.BillTypeId.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.BillTypeId.tooltip}"
+                                    readOnly="true" id="soc4">
+                  <f:selectItems value="#{row.bindings.BillTypeId.items}" id="si4"/>
+                  <f:validator binding="#{row.bindings.BillTypeId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.ServicesId.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.ServicesId.label}" id="c5" width="10%"
+                         align="left" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.ServicesId.inputValue}"
+                                    label="#{row.bindings.ServicesId.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.ServicesId.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.ServicesId.tooltip}"
+                                    readOnly="true" id="soc5">
+                  <f:selectItems value="#{row.bindings.ServicesId.items}" id="si5"/>
+                  <f:validator binding="#{row.bindings.ServicesId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.Status.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.Status.label}" id="c25" width="10%"
+                         align="center">
+                <af:selectOneChoice value="#{row.bindings.Status.inputValue}" label="#{row.bindings.Status.label}"
+                                    required="#{bindings.SgsAccRecInvoicesVO1.hints.Status.mandatory}"
+                                    shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.Status.tooltip}" readOnly="true"
+                                    id="soc10">
+                  <f:selectItems value="#{row.bindings.Status.items}" id="si10"/>
+                  <f:validator binding="#{row.bindings.Status.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedDate.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedDate.label}" id="c7" width="10%"
+                         align="center">
+                <f:facet name="filter">
+                  <af:inputDate value="#{bindings.SgsAccRecInvoicesVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                id="id1">
+                    <af:convertDateTime pattern="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedDate.format}"/>
+                  </af:inputDate>
+                </f:facet>
+                <af:outputText value="#{row.CreatedDate}"
+                               shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedDate.tooltip}" id="ot2">
+                  <af:convertDateTime pattern="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedBy.name}" filterable="true"
+                         headerText="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedBy.label}" id="c8" width="10%"
+                         align="center">
+                <af:outputText value="#{row.CreatedBy}"
+                               shortDesc="#{bindings.SgsAccRecInvoicesVO1.hints.CreatedBy.tooltip}" id="ot3"/>
+              </af:column>
+            </af:table>
+            <f:facet name="statusbar"/>
+            <f:facet name="secondaryToolbar">
+              <af:toolbar id="t7" rendered="#{securityContext.userName == 'SUPER'}" partialTriggers="t1">
+                <af:button text="Approve" id="b10" accessKey="A" action="#{pageFlowScope.ReceivablesBean.approveARInv}"
+                           disabled="#{bindings.SgsAccRecInvoicesVO1Iterator.estimatedRowCount &lt;= 0 ? true : bindings.Status.inputValue != 'D'}"/>
+                <af:button text="Reject" id="b11" accessKey="R" action="#{pageFlowScope.ReceivablesBean.rejectARinv}"
+                           disabled="#{bindings.SgsAccRecInvoicesVO1Iterator.estimatedRowCount &lt;= 0 ? true : bindings.Status.inputValue != 'D'}"/>
+                <af:button text="Cancel" id="b12" accessKey="C" action="#{pageFlowScope.ReceivablesBean.cancelARInv}"
+                           disabled="#{bindings.SgsAccRecInvoicesVO1Iterator.estimatedRowCount &lt;= 0 ? true : bindings.Status.inputValue != 'D'}"/>
+              </af:toolbar>
+            </f:facet>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="AR Invoice Lines" id="pb2">
+          <f:facet name="toolbar"/>
+          <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t3">
+                <af:button id="b8" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsArInvoiceLinesVO1.estimatedRowCount &lt;= 0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="t5" filename="ARinvoicesLines.xls"/>
+                </af:button>
+                <af:button actionListener="#{bindings.CreateInsert1.execute}" id="b3" icon="/resources/icons/plus.png"
+                           action="arInvLineCreate"
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=Update']) ? true : (bindings.SgsAccRecInvoicesVO1.estimatedRowCount &lt;=0)}"
+                           partialTriggers="::qryId1"/>
+                <af:button
+                           disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=Update']) ? true : (!bindings.Delete1.enabled)}" id="b4" icon="/resources/icons/delete.png"
+                           action="#{pageFlowScope.ReceivablesBean.deleteARInvLineButton}"/>
+              </af:toolbar>
+            </f:facet>
+            <af:table value="#{bindings.SgsArInvoiceLinesVO1.collectionModel}" var="row"
+                      rows="#{bindings.SgsArInvoiceLinesVO1.rangeSize}"
+                      emptyText="#{bindings.SgsArInvoiceLinesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SgsArInvoiceLinesVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SgsArInvoiceLinesVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.SgsArInvoiceLinesVO1.rangeSize}"
+                      filterModel="#{bindings.SgsArInvoiceLinesVO1Query.queryDescriptor}" 
+                      queryListener="#{bindings.SgsArInvoiceLinesVO1Query.processQuery}" varStatus="vs" id="t5"
+                      styleClass="AFStretchWidth" partialTriggers="::b3 ::b4" >
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceLinesNo.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceLinesNo.label}" id="c9"
+                         align="left" inlineStyle="text-align:left;" width="10%">
+                <!--<af:outputText value="#{row.ArInvoiceLinesNo}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceLinesNo.tooltip}" id="ot1"/>-->
+                <af:link text="#{row.ArInvoiceLinesNo}" id="l2" action="arInvLineEdit" inlineStyle="font-weight:bold;"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.BuId.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.BuId.label}" id="c10" align="left"
+                         inlineStyle="text-align:left;" width="10%">
+                <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                    required="#{bindings.SgsArInvoiceLinesVO1.hints.BuId.mandatory}"
+                                    shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.BuId.tooltip}" readOnly="true"
+                                    id="soc6">
+                  <f:selectItems value="#{row.bindings.BuId.items}" id="si6"/>
+                  <f:validator binding="#{row.bindings.BuId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceNo.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceNo.label}" id="c11" align="left"
+                         inlineStyle="text-align:left;" width="10%">
+                <af:outputText value="#{row.ArInvoiceNo}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.ArInvoiceNo.tooltip}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.TotalAmount.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.TotalAmount.label}" id="c12" align="right"
+                         inlineStyle="text-align:right;" width="10%">
+                <af:outputText value="#{row.TotalAmount}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.TotalAmount.tooltip}" id="ot5">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArInvoiceLinesVO1.hints.TotalAmount.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.AmountPaid.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.AmountPaid.label}" id="c13" align="right"
+                         inlineStyle="text-align:right;" width="10%">
+                <af:outputText value="#{row.AmountPaid}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.AmountPaid.tooltip}" id="ot6">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArInvoiceLinesVO1.hints.AmountPaid.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.RemainingPayments.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.RemainingPayments.label}" id="c14"
+                         align="right" inlineStyle="text-align:right;" width="10%">
+                <af:outputText value="#{row.RemainingPayments}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.RemainingPayments.tooltip}" id="ot7">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArInvoiceLinesVO1.hints.RemainingPayments.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedDate.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedDate.label}" id="c15" align="left" width="10%">
+                <f:facet name="filter">
+                  <af:inputDate value="#{bindings.SgsArInvoiceLinesVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                id="id2">
+                    <af:convertDateTime pattern="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedDate.format}"/>
+                  </af:inputDate>
+                </f:facet>
+                <af:outputText value="#{row.CreatedDate}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedDate.tooltip}" id="ot8">
+                  <af:convertDateTime pattern="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedBy.name}" filterable="true"
+                         headerText="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedBy.label}" id="c16" align="left" width="10%">
+                <af:outputText value="#{row.CreatedBy}"
+                               shortDesc="#{bindings.SgsArInvoiceLinesVO1.hints.CreatedBy.tooltip}" id="ot9"/>
+              </af:column>
+            </af:table>
+            <f:facet name="statusbar"/>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="AR Receipt" id="pb3" rendered="true">
+          <f:facet name="toolbar"/>
+          <af:panelCollection id="pc3" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t4">
+                <af:button id="b9" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
+                           disabled="#{bindings.SgsARInvoicetoARPaymentsVO.estimatedRowCount &lt;= 0}">
+                  <af:exportCollectionActionListener type="excelHTML" exportedId="t6" filename="ARinvoicesReceipt.xls"/>
+                </af:button>
+              </af:toolbar>
+            </f:facet>
+            <af:table value="#{bindings.SgsArReceiptDtlVO1.collectionModel}" var="row"
+                      rows="#{bindings.SgsArReceiptDtlVO1.rangeSize}"
+                      emptyText="#{bindings.SgsArReceiptDtlVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.SgsArReceiptDtlVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SgsArReceiptDtlVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" fetchSize="#{bindings.SgsArReceiptDtlVO1.rangeSize}"
+                      filterModel="#{bindings.SgsArReceiptDtlVO1Query.queryDescriptor}" 
+                      queryListener="#{bindings.SgsArReceiptDtlVO1Query.processQuery}" varStatus="vs" id="t6"
+                      styleClass="AFStretchWidth">
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.ReceiptDtlId.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.ReceiptDtlId.label}" id="c17" align="left"
+                         width="15%" inlineStyle="text-align:left;">
+                <af:outputText value="#{row.ReceiptDtlId}"
+                               shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.ReceiptDtlId.tooltip}" id="ot1">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArReceiptDtlVO1.hints.ReceiptDtlId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.AccRecInvoicesId.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.AccRecInvoicesId.label}" id="c18"
+                         align="left" width="15%" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.AccRecInvoicesId.inputValue}"
+                                    label="#{row.bindings.AccRecInvoicesId.label}"
+                                    required="#{bindings.SgsArReceiptDtlVO1.hints.AccRecInvoicesId.mandatory}"
+                                    shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.AccRecInvoicesId.tooltip}"
+                                    readOnly="true" id="soc7">
+                  <f:selectItems value="#{row.bindings.AccRecInvoicesId.items}" id="si7"/>
+                  <f:validator binding="#{row.bindings.AccRecInvoicesId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.ArReceiptId.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.ArReceiptId.label}" id="c19" align="left"
+                         width="15%" inlineStyle="text-align:left;">
+                <af:outputText value="#{row.ArReceiptId}"
+                               shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.ArReceiptId.tooltip}" id="ot10">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArReceiptDtlVO1.hints.ArReceiptId.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.BuId.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.BuId.label}" id="c20" align="left"
+                         width="15%" inlineStyle="text-align:left;">
+                <af:selectOneChoice value="#{row.bindings.BuId.inputValue}" label="#{row.bindings.BuId.label}"
+                                    required="#{bindings.SgsArReceiptDtlVO1.hints.BuId.mandatory}"
+                                    shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.BuId.tooltip}" readOnly="true"
+                                    id="soc8">
+                  <f:selectItems value="#{row.bindings.BuId.items}" id="si8"/>
+                  <f:validator binding="#{row.bindings.BuId.validator}"/>
+                </af:selectOneChoice>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.AmountPaid.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.AmountPaid.label}" id="c21" align="right"
+                         width="15%" inlineStyle="text-align:right;">
+                <af:outputText value="#{row.AmountPaid}"
+                               shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.AmountPaid.tooltip}" id="ot11">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SgsArReceiptDtlVO1.hints.AmountPaid.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.CreatedDate.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.CreatedDate.label}" id="c22" align="right"
+                         width="15%" inlineStyle="text-align:left;">
+                <f:facet name="filter">
+                  <af:inputDate value="#{bindings.SgsArReceiptDtlVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreatedDate.value}"
+                                id="id3">
+                    <af:convertDateTime pattern="#{bindings.SgsArReceiptDtlVO1.hints.CreatedDate.format}"/>
+                  </af:inputDate>
+                </f:facet>
+                <af:outputText value="#{row.CreatedDate}"
+                               shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.CreatedDate.tooltip}" id="ot12">
+                  <af:convertDateTime pattern="#{bindings.SgsArReceiptDtlVO1.hints.CreatedDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SgsArReceiptDtlVO1.hints.CreatedBy.name}" filterable="true"
+                         headerText="#{bindings.SgsArReceiptDtlVO1.hints.CreatedBy.label}" id="c23" align="right"
+                         width="15%" inlineStyle="text-align:left;">
+                <af:outputText value="#{row.CreatedBy}"
+                               shortDesc="#{bindings.SgsArReceiptDtlVO1.hints.CreatedBy.tooltip}" id="ot13"/>
+              </af:column>
+            </af:table>
+            <f:facet name="statusbar"/>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:outputText value="#{bindings.Status.inputValue}" shortDesc="#{bindings.Status.hints.tooltip}" id="ot14"
+                       visible="false"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:ReceivablesBean-->
+</ui:composition>

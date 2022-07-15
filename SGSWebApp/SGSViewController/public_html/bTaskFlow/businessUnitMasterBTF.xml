@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="businessUnitMasterBTF">
+    <default-activity>businessUnitMaster</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name>BusinessUnitsMasterBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.BusinessUnitsMasterBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="businessUnitMaster">
+      <page>/jsff/businessUnitMaster.jsff</page>
+    </view>
+    <task-flow-call id="businessUnitMasterFormADD">
+      <task-flow-reference>
+        <document>/bTaskFlow/businessUnitMasterFormBTF.xml</document>
+        <id>businessUnitMasterFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>pBUMAddEdit</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="businessUnitMasterFormEDIT">
+      <task-flow-reference>
+        <document>/bTaskFlow/businessUnitMasterFormBTF.xml</document>
+        <id>businessUnitMasterFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>pBUMAddEdit</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>businessUnitMaster</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ADD</from-outcome>
+        <to-activity-id>businessUnitMasterFormADD</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>EDIT</from-outcome>
+        <to-activity-id>businessUnitMasterFormEDIT</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

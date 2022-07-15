@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="newWelcomePagePageDef"
+                Package="jsf">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsBusinessUnitsVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsBusinessUnitsVO1Iterator"/>
+        <taskFlow id="businessUnitBTF1" taskFlowId="/bTaskFlow/businessUnitBTF.xml#businessUnitBTF"
+                  activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsBusinessUnitsVO1Iterator" id="SgsBusinessUnitsVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsBusinessUnitsVO" Name="SgsBusinessUnitsVO10">
+                <AttrNames>
+                    <Item Value="BuId"/>
+                    <Item Value="BuName"/>
+                    <Item Value="BuDesc"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="UpdatedDate"/>
+                    <Item Value="UpdatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
+</pageDefinition>

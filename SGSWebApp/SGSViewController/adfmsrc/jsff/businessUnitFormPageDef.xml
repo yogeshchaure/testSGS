@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="businessUnitFormPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsBusinessUnitsVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsBusinessUnitsVO1Iterator"/>
+    </executables>
+    <bindings>
+        <attributeValues IterBinding="SgsBusinessUnitsVO1Iterator" id="BuName">
+            <AttrNames>
+                <Item Value="BuName"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsBusinessUnitsVO1Iterator" id="BuDesc">
+            <AttrNames>
+                <Item Value="BuDesc"/>
+            </AttrNames>
+        </attributeValues>
+        <action IterBinding="SgsBusinessUnitsVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+    </bindings>
+</pageDefinition>

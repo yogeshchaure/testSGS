@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="apInvoiceLinesPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsApInvoiceLinesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsApInvoiceLinesVO1Iterator"/>
+        <iterator Binds="SgsAccPayInvoicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsAccPayInvoicesVO1Iterator"/>
+    </executables>
+    <bindings>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action IterBinding="SgsApInvoiceLinesVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <attributeValues IterBinding="SgsApInvoiceLinesVO1Iterator" id="ApInvoiceLinesNo">
+            <AttrNames>
+                <Item Value="ApInvoiceLinesNo"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsApInvoiceLinesVO1Iterator" id="ApInvoiceNo">
+            <AttrNames>
+                <Item Value="ApInvoiceNo"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsApInvoiceLinesVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsApInvoiceLinesVO1Iterator" id="TotalAmount">
+            <AttrNames>
+                <Item Value="TotalAmount"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsApInvoiceLinesVO1Iterator" id="AmountPaid">
+            <AttrNames>
+                <Item Value="AmountPaid"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsApInvoiceLinesVO1Iterator" id="RemainingPayments">
+            <AttrNames>
+                <Item Value="RemainingPayments"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsAccPayInvoicesVO1Iterator" id="ApInvoiceNo1">
+            <AttrNames>
+                <Item Value="ApInvoiceNo"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId1"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_SuppliersId" id="SuppliersId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_ServicesId" id="ServicesId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <attributeValues IterBinding="SgsAccPayInvoicesVO1Iterator" id="CreatedDate">
+            <AttrNames>
+                <Item Value="CreatedDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SgsAccPayInvoicesVO1Iterator" id="CreatedBy">
+            <AttrNames>
+                <Item Value="CreatedBy"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsAccPayInvoicesVO1Iterator" StaticList="false" Uses="LOV_Status" id="Status"
+              DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    </bindings>
+</pageDefinition>

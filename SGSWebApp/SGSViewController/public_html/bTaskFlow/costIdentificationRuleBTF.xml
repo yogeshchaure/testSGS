@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="costIdentificationRuleBTF">
+    <default-activity>costIdentificationRule</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__6">
+      <managed-bean-name>CostIdentificationRuleBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.CostIdentificationRuleBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="costIdentificationRule">
+      <page>/jsff/costIdentificationRule.jsff</page>
+    </view>
+    <task-flow-call id="costIdentificationAdd">
+      <task-flow-reference>
+        <document>/bTaskFlow/costIdentificationFormBTF.xml</document>
+        <id>costIdentificationFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>paddEditCIR</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="costIdentificationFormEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/costIdentificationFormBTF.xml</document>
+        <id>costIdentificationFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>paddEditCIR</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>costIdentificationRule</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>CIRAdd</from-outcome>
+        <to-activity-id>costIdentificationAdd</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>CIREdit</from-outcome>
+        <to-activity-id>costIdentificationFormEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

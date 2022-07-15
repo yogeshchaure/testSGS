@@ -1,0 +1,60 @@
+//Groovy Scripts for com.sgs.model.view.SgsCostIdentificationRuleVO
+
+package com.sgs.model.view
+
+import oracle.jbo.script.annotation.AccessorParameterExpression;
+
+@AccessorParameterExpression(accessorName="CostRuleList", name="pName")
+def pName_CostRuleList_BindVariable_BoundParameter()
+{
+RuleId
+}
+
+@AccessorParameterExpression(accessorName="CostRuleList", name="pType")
+def pType_CostRuleList_BindVariable_BoundParameter()
+{
+'COSTRULEID'
+}
+
+
+@AccessorParameterExpression(accessorName="AccountTreatmentList", name="pName")
+def pName_AccountTreatmentList_BindVariable_BoundParameter()
+{
+AccountTratment
+}
+
+
+@AccessorParameterExpression(accessorName="AccountTreatmentList", name="pType")
+def pType_AccountTreatmentList_BindVariable_BoundParameter()
+{
+'ACC_TREAT'
+}
+
+
+@AccessorParameterExpression(accessorName="GLcodeList", name="pName")
+def pName_GLcodeList_BindVariable_BoundParameter()
+{
+GlCode
+}
+
+
+@AccessorParameterExpression(accessorName="GLcodeList", name="pType")
+def pType_GLcodeList_BindVariable_BoundParameter()
+{
+'GLCODE'
+}
+
+
+@AccessorParameterExpression(accessorName="JobCodeList", name="pName")
+def pName_JobCodeList_BindVariable_BoundParameter()
+{
+JobCode
+}
+
+
+@AccessorParameterExpression(accessorName="JobCodeList", name="pType")
+def pType_JobCodeList_BindVariable_BoundParameter()
+{
+'JOBCODE'
+}
+

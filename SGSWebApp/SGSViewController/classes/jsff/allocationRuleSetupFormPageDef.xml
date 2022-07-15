@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="allocationRuleSetupFormPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsAllocationRuleSetupVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsAllocationRuleSetupVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SgsAllocationRuleSetupVO1Iterator" id="AllocationRuleId">
+      <AttrNames>
+        <Item Value="AllocationRuleId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsAllocationRuleSetupVO1Iterator" StaticList="false" Uses="LOV_CostIdentificationId"
+          id="CostIdentificationId" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsAllocationRuleSetupVO1Iterator" StaticList="false" Uses="LOV_AllocationBasis"
+          id="AllocationBasis" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsAllocationRuleSetupVO1Iterator" StaticList="false" Uses="LOV_OffsetAccount"
+          id="OffsetAccount" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsAllocationRuleSetupVO1Iterator" StaticList="false" Uses="LOV_TargetAccount"
+          id="TargetAccount" DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsAllocationRuleSetupVO1Iterator" id="EffectiveStartDate">
+      <AttrNames>
+        <Item Value="EffectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsAllocationRuleSetupVO1Iterator" id="EffectiveEndDate">
+      <AttrNames>
+        <Item Value="EffectiveEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsAllocationRuleSetupVO1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsAllocationRuleSetupVO1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="SgsAllocationRuleSetupVO1Iterator" id="Delete"
+            InstanceName="SGSAppModuleDataControl.SgsAllocationRuleSetupVO1" DataControl="SGSAppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

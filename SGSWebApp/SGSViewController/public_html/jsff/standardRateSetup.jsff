@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelStretchLayout id="psl1">
+        <f:facet name="start"/>
+        <f:facet name="end"/>
+        <f:facet name="top"/>
+        <f:facet name="bottom"/>
+        <f:facet name="center">
+            <af:panelBox text="Standard Rate Setup" id="pb1">
+                <f:facet name="toolbar"/>
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:panelHeader text=" " id="ph1">
+                        <af:query id="qryId1" headerText="Search" disclosed="true"
+                                  value="#{bindings.SgsStandarardRateVOCriteriaQuery.queryDescriptor}"
+                                  model="#{bindings.SgsStandarardRateVOCriteriaQuery.queryModel}"
+                                  queryListener="#{bindings.SgsStandarardRateVOCriteriaQuery.processQuery}"
+                                  queryOperationListener="#{bindings.SgsStandarardRateVOCriteriaQuery.processQueryOperation}"
+                                  resultComponentId="::pc1:resId1" rows="2" maxColumns="2" saveQueryMode="hidden"/>
+                    </af:panelHeader>
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1">
+                                <af:button id="b7" icon="/resources/icons/microsoft-excel.png"
+                                           shortDesc="Export to Excel"
+                                           disabled="#{bindings.SgsStandarardRateVO1.estimatedRowCount &lt;= 0}">
+                                    <af:exportCollectionActionListener type="excelHTML" exportedId="resId1"
+                                                                       filename="StandardRateRule.xls"/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                           disabled="#{!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']}"
+                                           id="b1" action="ADD" icon="/resources/icons/plus.png"
+                                           shortDesc="Create/Add Cost Identification Rule"/>
+                                <af:button disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonTest;action=Update']) ? true : (!bindings.Delete.enabled)}"
+                                           id="b2" shortDesc="Delete Business Unit" icon="/resources/icons/delete.png"
+                                           action="#{pageFlowScope.StandardRateSetupBean.deleteStandardrateRule}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.SgsStandarardRateVO1.collectionModel}" var="row"
+                                  rows="#{bindings.SgsStandarardRateVO1.rangeSize}"
+                                  emptyText="#{bindings.SgsStandarardRateVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.SgsStandarardRateVO1.rangeSize}"
+                                  id="resId1" styleClass="AFStretchWidth" columnStretching="column:resId1c1">
+                            <af:column headerText="Expense Type" id="resId1c1">
+                                <!--<af:selectOneChoice value="#{row.bindings.ExpenseType.inputValue}"
+                                                    label="#{row.bindings.ExpenseType.label}"
+                                                    required="#{bindings.SgsStandarardRateVO1.hints.ExpenseType.mandatory}"
+                                                    shortDesc="#{bindings.SgsStandarardRateVO1.hints.ExpenseType.tooltip}"
+                                                    readOnly="true" id="soc1">
+                                    <f:selectItems value="#{row.bindings.ExpenseType.items}" id="si1"/>
+                                    <f:validator binding="#{row.bindings.ExpenseType.validator}"/>
+                                </af:selectOneChoice>-->
+                                <!--<af:outputText value="#{row.ExpenseType}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.ExpenseType.tooltip}"
+                                               id="ot6"/>-->
+                                <af:link text="#{row.ExpenseType}" id="l1" action="EDIT" inlineStyle="font-weight:bold;"/>
+                            </af:column>
+                            <af:column headerText="Sub-ExpenseType" id="resId1c2">
+                                <af:selectOneChoice value="#{row.bindings.SubExpenseType.inputValue}"
+                                                    label="#{row.bindings.SubExpenseType.label}"
+                                                    required="#{bindings.SgsStandarardRateVO1.hints.SubExpenseType.mandatory}"
+                                                    shortDesc="#{bindings.SgsStandarardRateVO1.hints.SubExpenseType.tooltip}"
+                                                    readOnly="true" id="soc2">
+                                    <f:selectItems value="#{row.bindings.SubExpenseType.items}" id="si2"/>
+                                    <f:validator binding="#{row.bindings.SubExpenseType.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="GL Account" id="resId1c3">
+                                <af:selectOneChoice value="#{row.bindings.GlAccount.inputValue}"
+                                                    label="#{row.bindings.GlAccount.label}"
+                                                    required="#{bindings.SgsStandarardRateVO1.hints.GlAccount.mandatory}"
+                                                    shortDesc="#{bindings.SgsStandarardRateVO1.hints.GlAccount.tooltip}"
+                                                    readOnly="true" id="soc3">
+                                    <f:selectItems value="#{row.bindings.GlAccount.items}" id="si3"/>
+                                    <f:validator binding="#{row.bindings.GlAccount.validator}"/>
+                                </af:selectOneChoice>
+                            </af:column>
+                            <af:column headerText="Geography" id="resId1c4">
+                                <af:outputText value="#{row.SrGeography}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.SrGeography.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                            <af:column headerText="Organizational Level" id="resId1c5">
+                                <af:outputText value="#{row.EmployeeGradeLevel}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.EmployeeGradeLevel.tooltip}"
+                                               id="ot2"/>
+                            </af:column>
+                            <af:column headerText="Amount" id="resId1c6">
+                                <af:outputText value="#{row.StandardCost}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.StandardCost.tooltip}"
+                                               id="ot3">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.SgsStandarardRateVO1.hints.StandardCost.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="Effective Start Date" id="resId1c7">
+                                <af:outputText value="#{row.EffectiveStartDate}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.EffectiveStartDate.tooltip}"
+                                               id="ot4">
+                                    <af:convertDateTime pattern="#{bindings.SgsStandarardRateVO1.hints.EffectiveStartDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="Effective End Date" id="resId1c8">
+                                <af:outputText value="#{row.EffectiveEndDate}"
+                                               shortDesc="#{bindings.SgsStandarardRateVO1.hints.EffectiveEndDate.tooltip}"
+                                               id="ot5">
+                                    <af:convertDateTime pattern="#{bindings.SgsStandarardRateVO1.hints.EffectiveEndDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:panelGroupLayout>
+            </af:panelBox>
+        </f:facet>
+    </af:panelStretchLayout>
+</ui:composition>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="TPASetupFormPageDef"
+                Package="jsff">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SgsTpaMasterVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+              id="SgsTpaMasterVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SgsTpaMasterVO1Iterator" id="TpaId">
+      <AttrNames>
+        <Item Value="TpaId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SgsTpaMasterVO1Iterator" StaticList="false" Uses="LOV_LeServiceProvider" id="LeServiceProvider"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTpaMasterVO1Iterator" StaticList="false" Uses="LOV_LeServiceReceiver" id="LeServiceReceiver"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTpaMasterVO1Iterator" StaticList="false" Uses="LOV_PassThrough" id="PassThrough"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SgsTpaMasterVO1Iterator" StaticList="false" Uses="LOV_PassThroughBu" id="PassThroughBu"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SgsTpaMasterVO1Iterator" id="EffectiveStartDate">
+      <AttrNames>
+        <Item Value="EffectiveStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTpaMasterVO1Iterator" id="EffectiveEndDate">
+      <AttrNames>
+        <Item Value="EffectiveEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTpaMasterVO1Iterator" id="UpdatedDate">
+      <AttrNames>
+        <Item Value="UpdatedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SgsTpaMasterVO1Iterator" id="UpdatedBy">
+      <AttrNames>
+        <Item Value="UpdatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false"
+            Action="rollbackTransaction"/>
+    <action IterBinding="SgsTpaMasterVO1Iterator" id="Delete" InstanceName="SGSAppModuleDataControl.SgsTpaMasterVO1"
+            DataControl="SGSAppModuleDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

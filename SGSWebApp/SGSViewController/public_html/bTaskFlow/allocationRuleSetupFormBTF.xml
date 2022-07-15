@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="allocationRuleSetupFormBTF">
+    <default-activity>allocationRuleSetupForm</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>pAllocRuleSetAddEdit</name>
+      <value>#{pageFlowScope.pAllocRuleSetAddEdit}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <view id="allocationRuleSetupForm">
+      <page>/jsff/allocationRuleSetupForm.jsff</page>
+    </view>
+    <task-flow-return id="backToDashboard">
+      <outcome>
+        <name>backToDashboard</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>allocationRuleSetupForm</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>backToDashboard</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

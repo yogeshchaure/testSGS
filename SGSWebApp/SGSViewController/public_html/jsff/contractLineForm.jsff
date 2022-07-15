@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelBox id="pb3" showDisclosure="false">
+          <f:facet name="toolbar">
+            <af:toolbar id="t1">
+              <af:button actionListener="#{bindings.Commit.execute}" id="b1"
+                         action="back"
+                         disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonContract;action=Update'])}"
+                         text="Save and Close" accessKey="S"/>
+              <af:button actionListener="#{bindings.Rollback.execute}" immediate="true" id="b2"
+                         rendered="#{pageFlowScope.pAddEditConLine == 'EDIT'}" action="back" text="Cancel"
+                         accessKey="C">
+                <af:resetActionListener/>
+              </af:button>
+              <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}" id="b3"
+                         rendered="#{pageFlowScope.pAddEditConLine == 'ADD'}"
+                         action="back" immediate="true" text="Cancel"/>
+            </af:toolbar>
+          </f:facet>
+          <af:panelBox text="Contract Details" id="pb2">
+            <f:facet name="toolbar"/>
+            <af:panelFormLayout id="pfl2" rows="3">
+              <af:inputText value="#{bindings.ConNo.inputValue}" label="#{bindings.ConNo.hints.label}"
+                            required="#{bindings.ConNo.hints.mandatory}" readOnly="true"
+                            columns="#{bindings.ConNo.hints.displayWidth}"
+                            maximumLength="#{bindings.ConNo.hints.precision}"
+                            shortDesc="#{bindings.ConNo.hints.tooltip}" id="it2">
+                <f:validator binding="#{bindings.ConNo.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.BuId1.inputValue}" label="#{bindings.BuId1.label}"
+                                  required="#{bindings.BuId1.hints.mandatory}"
+                                  shortDesc="#{bindings.BuId1.hints.tooltip}" readOnly="true" id="soc3">
+                <f:selectItems value="#{bindings.BuId1.items}" id="si3"/>
+                <f:validator binding="#{bindings.BuId1.validator}"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.CustomersId.inputValue}" label="#{bindings.CustomersId.label}"
+                                  required="#{bindings.CustomersId.hints.mandatory}"
+                                  shortDesc="#{bindings.CustomersId.hints.tooltip}" readOnly="true" id="soc4">
+                <f:selectItems value="#{bindings.CustomersId.items}" id="si4"/>
+                <f:validator binding="#{bindings.CustomersId.validator}"/>
+              </af:selectOneChoice>
+              <af:selectOneChoice value="#{bindings.BillTypeId.inputValue}" label="#{bindings.BillTypeId.label}"
+                                  required="#{bindings.BillTypeId.hints.mandatory}"
+                                  shortDesc="#{bindings.BillTypeId.hints.tooltip}" readOnly="true" id="soc5">
+                <f:selectItems value="#{bindings.BillTypeId.items}" id="si5"/>
+                <f:validator binding="#{bindings.BillTypeId.validator}"/>
+              </af:selectOneChoice>
+              <af:inputDate value="#{bindings.CreatedDate.inputValue}" readOnly="true"
+                            label="#{bindings.CreatedDate.hints.label}"
+                            required="#{bindings.CreatedDate.hints.mandatory}"
+                            columns="#{bindings.CreatedDate.hints.displayWidth}"
+                            shortDesc="#{bindings.CreatedDate.hints.tooltip}" id="id1">
+                <f:validator binding="#{bindings.CreatedDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.CreatedDate.format}"/>
+              </af:inputDate>
+              <af:inputText value="#{bindings.CreatedBy.inputValue}" label="#{bindings.CreatedBy.hints.label}"
+                            required="#{bindings.CreatedBy.hints.mandatory}" readOnly="true"
+                            columns="#{bindings.CreatedBy.hints.displayWidth}"
+                            maximumLength="#{bindings.CreatedBy.hints.precision}"
+                            shortDesc="#{bindings.CreatedBy.hints.tooltip}" id="it3">
+                <f:validator binding="#{bindings.CreatedBy.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelBox>
+          <af:panelBox text="Contract Line" id="pb1">
+            <f:facet name="toolbar"/>
+            <af:panelFormLayout id="pfl1" rows="2">
+              <af:selectOneChoice value="#{bindings.BuId.inputValue}" label="#{bindings.BuId.label}"
+                                  required="#{bindings.BuId.hints.mandatory}" shortDesc="#{bindings.BuId.hints.tooltip}"
+                                  id="soc1" readOnly="true">
+                <f:selectItems value="#{bindings.BuId.items}" id="si1"/>
+                <f:validator binding="#{bindings.BuId.validator}"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.LineNo.inputValue}" label="#{bindings.LineNo.hints.label}"
+                            required="#{bindings.LineNo.hints.mandatory}"
+                            columns="#{bindings.LineNo.hints.displayWidth}"
+                            maximumLength="#{bindings.LineNo.hints.precision}"
+                            shortDesc="#{bindings.LineNo.hints.tooltip}" id="it1">
+                <f:validator binding="#{bindings.LineNo.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.ServicesId.inputValue}" label="#{bindings.ServicesId.label}"
+                                  required="#{bindings.ServicesId.hints.mandatory}"
+                                  shortDesc="#{bindings.ServicesId.hints.tooltip}" id="soc2">
+                <f:selectItems value="#{bindings.ServicesId.items}" id="si2"/>
+                <f:validator binding="#{bindings.ServicesId.validator}"/>
+              </af:selectOneChoice>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </af:panelBox>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

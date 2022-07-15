@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="apInvoiceLines">
+    <default-activity>apInvoiceLinesPage</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>pAddEditLine</name>
+      <value>#{pageFlowScope.pAddEditLine}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <view id="apInvoiceLinesPage">
+      <page>/jsff/apInvoiceLines.jsff</page>
+    </view>
+    <task-flow-return id="backToAPInv">
+      <outcome>
+        <name>backToAPInv</name>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__2">
+      <from-activity-id>apInvoiceLinesPage</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>backToAPInv</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

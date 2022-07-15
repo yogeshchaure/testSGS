@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="unspecified"/>
+   <task-flow-descriptor path="bTaskFlow/TPASetupBTF.xml" id="TPASetupBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/TPASetupFormBTF.xml" id="TPASetupFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pTPAAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/adminBTF.xml" id="adminBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/allocationRuleSetupBTF.xml" id="allocationRuleSetupBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/allocationRuleSetupFormBTF.xml" id="allocationRuleSetupFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAllocRuleSetAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/apInvoiceBTF.xml" id="apInvoiceBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/apInvoiceFormBTF.xml" id="apInvoiceFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditAPInv"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/apInvoiceLinesBTF.xml" id="apInvoiceLines" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditLine"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/apInvoiceMainBTF.xml" id="apInvoiceMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/apPaymentsDtlBTF.xml" id="apPaymentsDtlBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditPDtl"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/approveallocatedICoTransactionBTF.xml" id="approveallocatedICoTransactionBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/arInvMainBTF.xml" id="arInvMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/arInvoiceBTF.xml" id="arInvoiceBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/arInvoiceFormBTF.xml" id="arInvoiceFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pARInvAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/arInvoiceLinesBTF.xml" id="arInvoiceLinesBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pARLineAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/arReceiptDtlBTF.xml" id="arReceiptDtlBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditRcptDtl"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/arReceiptMainBTF.xml" id="arReceiptMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/businessUnitBTF.xml" id="businessUnitBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/businessUnitFormBTF.xml" id="businessUnitFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="callType"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/businessUnitMasterBTF.xml" id="businessUnitMasterBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/businessUnitMasterFormBTF.xml" id="businessUnitMasterFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pBUMAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/contractLinesFormBTF.xml" id="contractLinesFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditConLine"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/contractsBTF.xml" id="contractsBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/contractsFormBTF.xml" id="contractsFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditContract"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/costIdentificationFormBTF.xml" id="costIdentificationFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="paddEditCIR"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/costIdentificationRuleBTF.xml" id="costIdentificationRuleBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/customersBTF.xml" id="customersBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/customersFormBTF.xml" id="customersFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/invoicing.xml" id="invoicing" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/paymentsBTF.xml" id="paymentsBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEditAPPay"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/paymentsMainBTF.xml" id="paymentsMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/processMainBTF.xml" id="processMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/projectsBTF.xml" id="projectsBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/projectsFormBTF.xml" id="projectsFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/receiptBTF.xml" id="receiptBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pARReceiptAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/reportMainBTF.xml" id="reportMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/securityMainBTF.xml" id="securityMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/servicesBTF.xml" id="servicesBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/servicesFormBTF.xml" id="servicesFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/setUpRulesBTF.xml" id="setUpRulesBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/standardRateSetupBTF.xml" id="standardRateSetupBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/standardSetupRuleFormBTF.xml" id="standardSetupRuleFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pSRAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/suppliersBTF.xml" id="suppliersBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/suppliersFormBTF.xml" id="suppliersFormBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/transBCostAllocationFormBTF.xml" id="transBCostAllocationEditBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets">
+      <input-parameter name="pTransBCAAddEdit"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="bTaskFlow/transBCostAllocationMainBTF.xml" id="transBCostAllocationMainBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+   <task-flow-descriptor path="bTaskFlow/transactionalDataBTF.xml" id="transactionalDataBTF" type="task-flow-definition" uses-page-fragments="true" library-internal="false" remote-invocable="false" train="false" critical="false" page-type="facelets"/>
+</task-flow-registry>

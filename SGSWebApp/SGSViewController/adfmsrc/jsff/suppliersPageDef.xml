@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="suppliersPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsSuppliersVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsSuppliersVO1Iterator"/>
+        <searchRegion Criteria="SgsSuppliersVOCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsSuppliersVO1Iterator" id="SgsSuppliersVOCriteriaQuery"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsSuppliersVO1Iterator" id="SgsSuppliersVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsSuppliersVO" Name="SgsSuppliersVO10">
+                <AttrNames>
+                    <Item Value="BuId"/>
+                    <Item Value="ServicesId"/>
+                    <Item Value="SupplierCode"/>
+                    <Item Value="SupplierName"/>
+                    <Item Value="SupplierConN0"/>
+                    <Item Value="SupplierAddress"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsSuppliersVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsSuppliersVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+    </bindings>
+</pageDefinition>

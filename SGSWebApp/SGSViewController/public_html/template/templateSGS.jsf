@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component">
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>templateSGS</afc:display-name>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelGridLayout id="pt_pgl1" inlineStyle="background-color:white;">
+        <af:gridRow id="pt_gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc1">
+                <af:panelGridLayout id="pgl2">
+                    <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr1">
+                        <af:gridCell marginStart="5px" width="25%" id="gc1" halign="center" valign="middle">
+                            <af:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="background-color:white;">
+                                <af:image source="/resources/images/SGSLogo.jpg" id="i1" styleClass="width:40%"
+                                          inlineStyle="height:87px; width:255px;"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                        <af:gridCell marginStart="5px" width="25%" id="gc2"/>
+                        <af:gridCell marginStart="5px" width="25%" id="gc3"/>
+                        <af:gridCell marginStart="5px" width="25%" marginEnd="5px" id="gc4" halign="end">
+                            <af:panelGroupLayout id="pgl3">
+                                <af:outputText value="#{securityContext.userName}" id="ot1"/>
+                                <af:link text='#{securityContext.authenticated ? "Logout" : "Login"}'
+                                         destination='#{securityContext.authenticated ? "/adfAuthentication?logout=true&amp;end_url=/faces/jsf/newWelcomePage.jsf" : "/adfAuthentication?success_url=/faces/welcomePage.jsf"}'
+                                         inlineStyle="color:blue; font-size:11px; font-weight:bold;margin-left:20px;"
+                                         id="gl1"/>
+                            </af:panelGroupLayout>
+                        </af:gridCell>
+                    </af:gridRow>
+                </af:panelGridLayout>
+            </af:gridCell>
+        </af:gridRow>
+        <af:gridRow height="100%" id="pt_gr2">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc2">
+                <af:panelGroupLayout layout="scroll" id="pt_pgl2">
+                    <!-- Content -->
+                    <af:outputText id="pt_ot1"/>
+                </af:panelGroupLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</af:pageTemplateDef>

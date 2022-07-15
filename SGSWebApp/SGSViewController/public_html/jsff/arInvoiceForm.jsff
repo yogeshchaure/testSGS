@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="AR Invoice" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:button actionListener="#{bindings.Commit.execute}"
+                       id="b1" action="back"
+                       disabled="#{(!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonARInv;action=Update'])}"
+                       text="Save and Close" accessKey="S"/>
+            <af:button actionListener="#{bindings.Rollback.execute}" immediate="true" id="b2"
+                       rendered="#{pageFlowScope.pARInvAddEdit == 'EDIT'}" action="back" text="Cancel" accessKey="C">
+              <af:resetActionListener/>
+            </af:button>
+            <af:button actionListener="#{bindings.Delete.execute}" disabled="#{!bindings.Delete.enabled}"
+                       id="b3" action="back" immediate="true"
+                       rendered="#{pageFlowScope.pARInvAddEdit == 'ADD'}" text="Cancel" accessKey="C"/>
+          </af:toolbar>
+        </f:facet>
+        <af:panelFormLayout id="pfl1" rows="4" maxColumns="2">
+          <af:inputText value="#{bindings.ArInvoiceNo.inputValue}" label="#{bindings.ArInvoiceNo.hints.label}"
+                        required="#{bindings.ArInvoiceNo.hints.mandatory}"
+                        columns="#{bindings.ArInvoiceNo.hints.displayWidth}"
+                        maximumLength="#{bindings.ArInvoiceNo.hints.precision}"
+                        shortDesc="#{bindings.ArInvoiceNo.hints.tooltip}" id="it1" 
+                        readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:validator binding="#{bindings.ArInvoiceNo.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.BuId.inputValue}" label="#{bindings.BuId.label}"
+                              required="#{bindings.BuId.hints.mandatory}" shortDesc="#{bindings.BuId.hints.tooltip}"
+                              id="soc1"  readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:selectItems value="#{bindings.BuId.items}" id="si1"/>
+            <f:validator binding="#{bindings.BuId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.CustomersId.inputValue}" label="#{bindings.CustomersId.label}"
+                              required="#{bindings.CustomersId.hints.mandatory}"
+                              shortDesc="#{bindings.CustomersId.hints.tooltip}" id="soc2" 
+                              readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:selectItems value="#{bindings.CustomersId.items}" id="si2"/>
+            <f:validator binding="#{bindings.CustomersId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ProjectsId.inputValue}" label="#{bindings.ProjectsId.label}"
+                              required="#{bindings.ProjectsId.hints.mandatory}"
+                              shortDesc="#{bindings.ProjectsId.hints.tooltip}" id="soc3" 
+                              readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:selectItems value="#{bindings.ProjectsId.items}" id="si3"/>
+            <f:validator binding="#{bindings.ProjectsId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.BillTypeId.inputValue}" label="#{bindings.BillTypeId.label}"
+                              required="#{bindings.BillTypeId.hints.mandatory}"
+                              shortDesc="#{bindings.BillTypeId.hints.tooltip}" id="soc4" 
+                              readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:selectItems value="#{bindings.BillTypeId.items}" id="si4"/>
+            <f:validator binding="#{bindings.BillTypeId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ServicesId.inputValue}" label="#{bindings.ServicesId.label}"
+                              required="#{bindings.ServicesId.hints.mandatory}"
+                              shortDesc="#{bindings.ServicesId.hints.tooltip}" id="soc5" 
+                              readOnly="#{ bindings.Status.inputValue != 'D'}">
+            <f:selectItems value="#{bindings.ServicesId.items}" id="si5"/>
+            <f:validator binding="#{bindings.ServicesId.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.Status.inputValue}" label="#{bindings.Status.label}"
+                              required="#{bindings.Status.hints.mandatory}" shortDesc="#{bindings.Status.hints.tooltip}"
+                              id="soc6" readOnly="true">
+            <f:selectItems value="#{bindings.Status.items}" id="si6"/>
+            <f:validator binding="#{bindings.Status.validator}"/>
+          </af:selectOneChoice>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</ui:composition>

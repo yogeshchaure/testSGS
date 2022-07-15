@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="arInvoiceBTF">
+    <default-activity>arInvoice</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__14">
+      <managed-bean-name>ReceivablesBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.ReceivablesBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="arInvoice">
+      <page>/jsff/arInvoice.jsff</page>
+    </view>
+    <task-flow-call id="arInvoiceFormCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/arInvoiceFormBTF.xml</document>
+        <id>arInvoiceFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>pARInvAddEdit</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="arInvoiceFormEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/arInvoiceFormBTF.xml</document>
+        <id>arInvoiceFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__5">
+        <name>pARInvAddEdit</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="arInvoiceLinesCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/arInvoiceLinesBTF.xml</document>
+        <id>arInvoiceLinesBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__6">
+        <name>pARLineAddEdit</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="arInvoiceLinesEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/arInvoiceLinesBTF.xml</document>
+        <id>arInvoiceLinesBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__7">
+        <name>pARLineAddEdit</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>arInvoice</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>arInvCreate</from-outcome>
+        <to-activity-id>arInvoiceFormCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__3">
+        <from-outcome>arInvEdit</from-outcome>
+        <to-activity-id>arInvoiceFormEdit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>arInvLineCreate</from-outcome>
+        <to-activity-id>arInvoiceLinesCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>arInvLineEdit</from-outcome>
+        <to-activity-id>arInvoiceLinesEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

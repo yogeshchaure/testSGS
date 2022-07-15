@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="contractsPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsContractHeaderVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsContractHeaderVO1Iterator"/>
+        <searchRegion Criteria="SgsContractHeaderVOCriteria"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsContractHeaderVO1Iterator" id="SgsContractHeaderVOCriteriaQuery"/>
+        <iterator Binds="SgsContractHeaderToLinesVO" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsContractHeaderToLinesVOIterator"/>
+        <searchRegion Binds="SgsContractHeaderToLinesVOIterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      id="SgsContractHeaderToLinesVOQuery"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsContractHeaderVO1Iterator" id="SgsContractHeaderVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsContractHeaderVO" Name="SgsContractHeaderVO10">
+                <AttrNames>
+                    <Item Value="ConNo"/>
+                    <Item Value="BuId"/>
+                    <Item Value="CustomersId"/>
+                    <Item Value="BillTypeId"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsContractHeaderVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsContractHeaderVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="SgsContractHeaderToLinesVOIterator" id="SgsContractHeaderToLinesVO">
+            <nodeDefinition DefName="com.sgs.model.view.SgsContractLinesVO" Name="SgsContractHeaderToLinesVO0">
+                <AttrNames>
+                    <Item Value="LineNo"/>
+                    <Item Value="BuId"/>
+                    <Item Value="ServicesId"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsContractHeaderToLinesVOIterator" id="CreateInsert1" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsContractHeaderToLinesVOIterator" id="Delete1" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+    </bindings>
+</pageDefinition>

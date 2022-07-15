@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="apInvoicePageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsAccPayInvoicesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsAccPayInvoicesVO1Iterator"/>
+        <searchRegion Criteria="SgsAccPayInvoicesVOCriteria"
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                      Binds="SgsAccPayInvoicesVO1Iterator" id="SgsAccPayInvoicesVOCriteriaQuery"/>
+        <iterator Binds="SgsApInvoiceLinesVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsApInvoiceLinesVO1Iterator"/>
+        <searchRegion Binds="SgsApInvoiceLinesVO1Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsApInvoiceLinesVO1Query"/>
+        <iterator Binds="SgsApInvPaymentsVO2" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsApInvPaymentsVO2Iterator"/>
+        <searchRegion Binds="SgsApInvPaymentsVO2Iterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SgsApInvPaymentsVO2Query"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="SgsAccPayInvoicesVO1Iterator" id="SgsAccPayInvoicesVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsAccPayInvoicesVO" Name="SgsAccPayInvoicesVO10">
+                <AttrNames>
+                    <Item Value="ApInvoiceNo"/>
+                    <Item Value="BuId"/>
+                    <Item Value="SuppliersId"/>
+                    <Item Value="ServicesId"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                    <Item Value="Status"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsAccPayInvoicesVO1Iterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <tree IterBinding="SgsApInvoiceLinesVO1Iterator" id="SgsApInvoiceLinesVO1">
+            <nodeDefinition DefName="com.sgs.model.view.SgsApInvoiceLinesVO" Name="SgsApInvoiceLinesVO10">
+                <AttrNames>
+                    <Item Value="ApInvoiceLinesNo"/>
+                    <Item Value="BuId"/>
+                    <Item Value="ApInvoiceNo"/>
+                    <Item Value="TotalAmount"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="RemainingPayments"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SgsApInvoiceLinesVO1Iterator" id="CreateInsert1" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SgsAccPayInvoicesVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <action IterBinding="SgsApInvoiceLinesVO1Iterator" id="Delete1" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <tree IterBinding="SgsApInvPaymentsVO2Iterator" id="SgsApInvPaymentsVO2">
+            <nodeDefinition DefName="com.sgs.model.view.SgsApInvPaymentsVO" Name="SgsApInvPaymentsVO20">
+                <AttrNames>
+                    <Item Value="AccPayInvoicesId"/>
+                    <Item Value="ApInvPaymentsId"/>
+                    <Item Value="BuId"/>
+                    <Item Value="AmountPaid"/>
+                    <Item Value="CreatedDate"/>
+                    <Item Value="CreatedBy"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action id="Commit" DataControl="SGSAppModuleDataControl" RequiresUpdateModel="true"
+                Action="commitTransaction"/>
+        <attributeValues IterBinding="SgsAccPayInvoicesVO1Iterator" id="Status">
+            <AttrNames>
+                <Item Value="Status"/>
+            </AttrNames>
+        </attributeValues>
+        <tree IterBinding="SgsAccPayInvoicesVO1Iterator" id="SgsAccPayInvoicesVO11">
+            <nodeDefinition DefName="com.sgs.model.view.SgsAccPayInvoicesVO" Name="SgsAccPayInvoicesVO110">
+                <AttrNames>
+                    <Item Value="Status"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
+</pageDefinition>

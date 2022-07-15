@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="contractFormPageDef"
+                Package="jsff">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="SgsContractHeaderVO1" RangeSize="25" DataControl="SGSAppModuleDataControl"
+                  id="SgsContractHeaderVO1Iterator"/>
+    </executables>
+    <bindings>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="SGSAppModuleDataControl"/>
+        <action IterBinding="SgsContractHeaderVO1Iterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <attributeValues IterBinding="SgsContractHeaderVO1Iterator" id="ConNo">
+            <AttrNames>
+                <Item Value="ConNo"/>
+            </AttrNames>
+        </attributeValues>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_BuId" id="BuId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_CustomersId" id="CustomersId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+        <list IterBinding="SgsContractHeaderVO1Iterator" StaticList="false" Uses="LOV_BillTypeId" id="BillTypeId"
+              DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    </bindings>
+</pageDefinition>

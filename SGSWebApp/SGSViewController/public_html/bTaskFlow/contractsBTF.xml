@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="contractsBTF">
+    <default-activity>contracts</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__10">
+      <managed-bean-name>ContractsBean</managed-bean-name>
+      <managed-bean-class>com.sgs.managedBean.ContractsBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="contracts">
+      <page>/jsff/contracts.jsff</page>
+    </view>
+    <task-flow-call id="contractLinesFormCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/contractLinesFormBTF.xml</document>
+        <id>contractLinesFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__1">
+        <name>pAddEditConLine</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="contractLinesFormEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/contractLinesFormBTF.xml</document>
+        <id>contractLinesFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__2">
+        <name>pAddEditConLine</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="contractsFormCreate">
+      <task-flow-reference>
+        <document>/bTaskFlow/contractsFormBTF.xml</document>
+        <id>contractsFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__3">
+        <name>pAddEditContract</name>
+        <value>ADD</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="contractsFormEdit">
+      <task-flow-reference>
+        <document>/bTaskFlow/contractsFormBTF.xml</document>
+        <id>contractsFormBTF</id>
+      </task-flow-reference>
+      <input-parameter id="__4">
+        <name>pAddEditContract</name>
+        <value>EDIT</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__5">
+      <from-activity-id>contracts</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>createConLine</from-outcome>
+        <to-activity-id>contractLinesFormCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>editConLine</from-outcome>
+        <to-activity-id>contractLinesFormEdit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>createCon</from-outcome>
+        <to-activity-id>contractsFormCreate</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__9">
+        <from-outcome>editCon</from-outcome>
+        <to-activity-id>contractsFormEdit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
