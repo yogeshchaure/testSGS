@@ -25,7 +25,7 @@
             <af:toolbar id="t2">
               <af:button id="b7" icon="/resources/icons/microsoft-excel.png" shortDesc="Export to Excel"
                          disabled="#{bindings.SgsSuppliersVO1.estimatedRowCount &lt;= 0}">
-                <af:exportCollectionActionListener type="excelHTML" exportedId="t1" filename="NewTestSgs1.xls"/>
+                <af:exportCollectionActionListener type="excelHTML" exportedId="t1" filename="test2Branch2.xls"/>
               </af:button>
               <af:button actionListener="#{bindings.CreateInsert.execute}"
                          disabled="#{ (!securityContext.userGrantedResource['resourceType=UIViewUpdateSecurity;resourceName=ButtonSupplier;action=Update'])}"
